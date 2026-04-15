@@ -12,7 +12,7 @@ html, body {
   -webkit-font-smoothing: antialiased; /* Hace que las fuentes se vean más finas */
 }
 
-/* 2. VARIABLES DE DISEÑO */
+/* VARIABLES DE DISEÑO */
 :root {
   --primary: #0a1a2f;    /* Azul profundo */
   --accent: #b4935a;     /* Dorado boutique */
@@ -20,7 +20,7 @@ html, body {
   --text-main: #1A1A1A;
 }
 
-/* 3. TIPOGRAFÍAS (Nombres exactos de tus archivos) */
+/* TIPOGRAFÍAS (Nombres exactos de tus archivos) */
 
 /* Inter - Regular (400) */
 @font-face {
