@@ -1,4 +1,14 @@
-/* 1. RESET Y CONFIGURACIÓN BASE */
+/* =========================
+   0. IMPORTS (SIEMPRE ARRIBA)
+========================= */
+
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+
+/* =========================
+   1. RESET
+========================= */
+
 * {
   box-sizing: border-box;
 }
@@ -7,22 +17,26 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  overflow-x: hidden; /* Evita el scroll horizontal molesto de Bootstrap */
-  background-color: #0a1a2f; /* Usamos el color directamente para evitar el flash blanco */
-  -webkit-font-smoothing: antialiased; /* Hace que las fuentes se vean más finas */
+  overflow-x: hidden;
+  background-color: #0a1a2f;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* VARIABLES DE DISEÑO */
+/* =========================
+   2. VARIABLES
+========================= */
+
 :root {
-  --primary: #0a1a2f;    /* Azul profundo */
-  --accent: #b4935a;     /* Dorado boutique */
+  --primary: #0a1a2f;
+  --accent: #b4935a;
   --bg-crema: #F9F7F2;
   --text-main: #1A1A1A;
 }
 
-/* TIPOGRAFÍAS (Nombres exactos de tus archivos) */
+/* =========================
+   3. TIPOGRAFÍAS
+========================= */
 
-/* Inter - Regular (400) */
 @font-face {
   font-family: 'Inter';
   src: url('../assets/fonts/inter-v20-latin-regular.woff2') format('woff2');
@@ -31,7 +45,6 @@ html, body {
   font-display: swap;
 }
 
-/* Inter - SemiBold (600) */
 @font-face {
   font-family: 'Inter';
   src: url('../assets/fonts/inter-v20-latin-600.woff2') format('woff2');
@@ -40,7 +53,6 @@ html, body {
   font-display: swap;
 }
 
-/* Lora - Regular (400) */
 @font-face {
   font-family: 'Lora';
   src: url('../assets/fonts/lora-v37-latin-regular.woff2') format('woff2');
@@ -49,7 +61,6 @@ html, body {
   font-display: swap;
 }
 
-/* Lora - Medium (500) */
 @font-face {
   font-family: 'Lora';
   src: url('../assets/fonts/lora-v37-latin-500.woff2') format('woff2');
@@ -58,39 +69,23 @@ html, body {
   font-display: swap;
 }
 
-/* 4. BOOTSTRAP (Grilla y Utilidades) */
-@import "bootstrap/dist/css/bootstrap-grid.min.css";
-@import "bootstrap/dist/css/bootstrap-utilities.min.css";
+/* =========================
+   4. TIPOGRAFÍA GLOBAL
+========================= */
 
-/* 5. ESTILOS GLOBALES DE TEXTO */
 body, p, .hero-description {
   font-family: 'Inter', sans-serif;
-  color: white; /* Color base para fondo oscuro */
+  color: white;
 }
-
-/* CONFIGURACIÓN DE CONTENEDORES */
-.container {
-  width: 100%;
-  padding-right: var(--bs-gutter-x, .75rem);
-  padding-left: var(--bs-gutter-x, .75rem);
-  margin-right: auto;
-  margin-left: auto;
-}
-
-/* BREAKPOINTS DE BOOTSTRAP (Para que el margen crezca con la pantalla) */
-@media (min-width: 576px) { .container { max-width: 540px; } }
-@media (min-width: 768px) { .container { max-width: 720px; } }
-@media (min-width: 992px) { .container { max-width: 960px; } }
-@media (min-width: 1200px) { .container { max-width: 1140px; } }
-@media (min-width: 1400px) { .container { max-width: 1320px; } }
-
-
-
 
 h1, h2, h3, .hero-title {
   font-family: 'Lora', serif;
   font-weight: 500;
 }
+
+/* =========================
+   5. UTILIDADES
+========================= */
 
 .text-accent {
   color: var(--accent) !important;
@@ -99,3 +94,21 @@ h1, h2, h3, .hero-title {
 .italic {
   font-style: italic;
 }
+
+/* =========================
+   6. CONTAINER (BOOTSTRAP STYLE)
+========================= */
+
+.container {
+  width: 100%;
+  padding-right: var(--bs-gutter-x, .75rem);
+  padding-left: var(--bs-gutter-x, .75rem);
+  margin: 0 auto;
+}
+
+/* breakpoints */
+@media (min-width: 576px) { .container { max-width: 540px; } }
+@media (min-width: 768px) { .container { max-width: 720px; } }
+@media (min-width: 992px) { .container { max-width: 960px; } }
+@media (min-width: 1200px) { .container { max-width: 1140px; } }
+@media (min-width: 1400px) { .container { max-width: 1320px; } }
