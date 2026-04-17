@@ -110,17 +110,15 @@ import { heroData } from "../../data/hero.js";
   .hero-container {
     position: relative;
     z-index: 2;
-
     padding: 100px;
   }
 
   /*evita que Bootstrap centre  raro */
   .hero-content {
     text-align: left;
-
     border-radius: 20px;
-
     background-color: rgba(10, 26, 47, 0.15);
+    padding: 2rem;
   }
 
   /* TITULO */
@@ -139,6 +137,7 @@ import { heroData } from "../../data/hero.js";
     color: rgba(255, 255, 255, 0.9);
     max-width: 580px;
     line-height: 1.7;
+    margin-block: 1rem;
   }
 
   /* ACTIONS */
@@ -188,6 +187,10 @@ import { heroData } from "../../data/hero.js";
 
     .hero-container {
       padding: 50px;
+    }
+
+    .hero-content {
+      padding: 1.5rem;
     }
 
     .hero-title {
