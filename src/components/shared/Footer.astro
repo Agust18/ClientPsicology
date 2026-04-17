@@ -1,85 +1,138 @@
----
-// Footer component - Single Responsibility: Footer display
----
+<section class="footer-section">
+    <footer
+        class="w-100 py-5 py-md-5 px-4 mt-auto bg-light border-top border-secondary-subtle"
+        aria-labelledby="footer-heading"
+    >
+        <h2 id="footer-heading" class="visually-hidden">Footer</h2>
 
-<footer class="w-full py-12 md:py-16 px-6 mt-auto bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900" aria-labelledby="footer-heading">
-    <h2 id="footer-heading" class="sr-only">Footer</h2>
-    
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 max-w-7xl mx-auto">
-        <div class="md:col-span-1">
-            <div class="text-xl font-serif italic text-slate-900 dark:text-slate-100 mb-4">
-                Atelier Medical
+        <div class="container-xl">
+            <div class="row gy-5">
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="h5 font-serif fst-italic text-dark mb-3">
+                        Atelier Medical
+                    </div>
+                    <p class="small text-muted lh-base">
+                        Consultoría médica boutique dedicada a la excelencia en
+                        casos de alta complejidad interdisciplinaria.
+                    </p>
+                </div>
+                <nav
+                    class="col-12 col-sm-6 col-md-3"
+                    aria-label="Navegación del pie de página"
+                >
+                    <h3 class="h6 font-serif fst-italic text-dark mb-4 fw-bold">
+                        Navegación
+                    </h3>
+                    <ul class="nav flex-column gap-2">
+                        <li>
+                            <a
+                                href="#inicio"
+                                class="nav-link p-0 small text-muted text-decoration-none"
+                                >Inicio</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="#sobre-nosotros"
+                                class="nav-link p-0 small text-muted text-decoration-none"
+                                >Sobre Nosotros</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="#equipo-medico"
+                                class="nav-link p-0 small text-muted text-decoration-none"
+                                >Equipo Médico</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="#filosofia"
+                                class="nav-link p-0 small text-muted text-decoration-none"
+                                >Filosofía</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+
+                <nav class="col-12 col-sm-6 col-md-3" aria-label="Servicios">
+                    <h3 class="h6 font-serif fst-italic text-dark mb-4 fw-bold">
+                        Servicios
+                    </h3>
+                    <ul class="nav flex-column gap-2">
+                        <li>
+                            <a
+                                href="#areas-intervencion"
+                                class="nav-link p-0 small text-muted text-decoration-none"
+                                >Áreas de Intervención</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="#psicologia-organizacional"
+                                class="nav-link p-0 small text-muted text-decoration-none"
+                                >Psicología Organizacional</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="#contacto"
+                                class="nav-link p-0 small text-muted text-decoration-none fw-medium"
+                                >Contacto</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="col-12 col-sm-6 col-md-3">
+                    <h3 class="h6 font-serif fst-italic text-dark mb-4 fw-bold">
+                        Legal
+                    </h3>
+                    <ul class="nav flex-column gap-2">
+                        <li>
+                            <a
+                                href="/privacidad"
+                                class="nav-link p-0 small text-muted text-decoration-none"
+                                >Política de Privacidad</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="/terminos"
+                                class="nav-link p-0 small text-muted text-decoration-none"
+                                >Términos de Servicio</a
+                            >
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <p class="font-sans text-sm text-slate-700 dark:text-slate-400 leading-relaxed">
-                Consultoría médica boutique dedicada a la excelencia en casos de
-                alta complejidad interdisciplinaria.
-            </p>
+
+            <div
+                class="border-top border-secondary-subtle mt-5 pt-4 text-center text-md-start"
+            >
+                <p class="xsmall text-secondary mb-0">
+                    © 2026 Atelier Medical. Todos los derechos reservados.
+                    <br class="d-md-none" />
+                    <span class="ms-md-1">Credenciales verificadas.</span>
+                </p>
+            </div>
         </div>
+    </footer>
+</section>
 
-        <nav aria-label="Navegación del pie de página">
-            <h3 class="font-serif italic text-slate-900 dark:text-slate-100 mb-5 text-base font-bold">
-                Navegación
-            </h3>
-            <ul class="space-y-2">
-                {['Inicio', 'Sobre Nosotros', 'Equipo Médico', 'Filosofía'].map((item) => (
-                    <li>
-                        <a href={`#${item.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-')}`} 
-                           class="font-sans text-sm text-slate-700 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors underline-offset-4 hover:underline py-2 inline-block w-full md:w-auto">
-                            {item}
-                        </a>
-                    </li>
-                ))}
-            </ul>
-        </nav>
-
-        <nav aria-label="Servicios">
-            <h3 class="font-serif italic text-slate-900 dark:text-slate-100 mb-5 text-base font-bold">
-                Servicios
-            </h3>
-            <ul class="space-y-2">
-                <li><a href="#areas-intervencion" class="font-sans text-sm text-slate-700 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors py-2 inline-block w-full md:w-auto">Áreas de Intervención</a></li>
-                <li><a href="#psicologia-organizacional" class="font-sans text-sm text-slate-700 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors py-2 inline-block w-full md:w-auto">Psicología Organizacional</a></li>
-                <li><a href="#contacto" class="font-sans text-sm text-slate-700 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors py-2 inline-block font-medium w-full md:w-auto">Contacto</a></li>
-            </ul>
-        </nav>
-
-        <div>
-            <h3 class="font-serif italic text-slate-900 dark:text-slate-100 mb-5 text-base font-bold">
-                Legal
-            </h3>
-            <ul class="space-y-2">
-                <li><a href="/privacidad" class="font-sans text-sm text-slate-700 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors py-2 inline-block w-full md:w-auto">Política de Privacidad</a></li>
-                <li><a href="/terminos" class="font-sans text-sm text-slate-700 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors py-2 inline-block w-full md:w-auto">Términos de Servicio</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="max-w-7xl mx-auto border-t border-slate-200 dark:border-slate-800 mt-12 pt-8 text-center md:text-left">
-        <p class="font-sans text-xs md:text-sm text-slate-500 dark:text-slate-500">
-            © {new Date().getFullYear()} Atelier Medical. Todos los derechos reservados. <br class="md:hidden" /> Credenciales verificadas.
-        </p>
-    </div>
-</footer>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Add smooth scrolling to footer links
-    document.querySelectorAll('footer a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', (e: Event) => {
-        if (!(e.target instanceof Node)) return;
-        e.preventDefault();
-        const currentAnchor = e.currentTarget;
-        if (!(currentAnchor instanceof HTMLAnchorElement)) return;
-        const href = currentAnchor.getAttribute('href');
-        if (!href) return;
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-  });
-</script>
+<style>
+    /**firts mobile */
+    .footer-section {
+        padding-top: 20px;
+    }
+    .font-serif {
+        font-family: Georgia, "Times New Roman", serif;
+    }
+    .xsmall {
+        font-size: 0.75rem;
+    }
+    .nav-link:hover {
+        color: #0d6efd !important;
+        text-decoration: underline !important;
+    }
+</style>

@@ -13,14 +13,19 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
   overflow-x: hidden;
   background-color: #0a1a2f;
   -webkit-font-smoothing: antialiased;
+
+  /* 👇 espacio para navbar fijo */
+
 }
+
 
 /* =========================
    2. VARIABLES
@@ -29,8 +34,8 @@ html, body {
 :root {
   --primary: #0a1a2f;
   --accent: #b4935a;
-  --bg-crema: #F9F7F2;
-  --text-main: #1A1A1A;
+
+
 }
 
 /* =========================
@@ -73,12 +78,17 @@ html, body {
    4. TIPOGRAFÍA GLOBAL
 ========================= */
 
-body, p, .hero-description {
+body,
+p,
+.hero-description {
   font-family: 'Inter', sans-serif;
   color: white;
 }
 
-h1, h2, h3, .hero-title {
+h1,
+h2,
+h3,
+.hero-title {
   font-family: 'Lora', serif;
   font-weight: 500;
 }
@@ -107,8 +117,32 @@ h1, h2, h3, .hero-title {
 }
 
 /* breakpoints */
-@media (min-width: 576px) { .container { max-width: 540px; } }
-@media (min-width: 768px) { .container { max-width: 720px; } }
-@media (min-width: 992px) { .container { max-width: 960px; } }
-@media (min-width: 1200px) { .container { max-width: 1140px; } }
-@media (min-width: 1400px) { .container { max-width: 1320px; } }
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
