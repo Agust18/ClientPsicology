@@ -23,10 +23,8 @@ import { heroData } from "../../data/hero.js";
 
   <div class="container hero-container">
     <div class="row justify-content-start">
-      
       <!--columna con alineación real -->
       <div class="col-12 col-lg-7 hero-content animate-fade-in-up">
-
         <h1 class="hero-title">
           {heroData.title1}
           <span class="text-accent italic animate-pulse-soft">
@@ -47,12 +45,19 @@ import { heroData } from "../../data/hero.js";
             <span class="border-bottom-accent">
               {heroData.ctaSecondary}
             </span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 -960 960 960" fill="currentColor">
-              <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 -960 960 960"
+              fill="currentColor"
+            >
+              <path
+                d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"
+              ></path>
             </svg>
           </button>
         </div>
-
       </div>
     </div>
   </div>
@@ -60,126 +65,145 @@ import { heroData } from "../../data/hero.js";
 
 <style>
   .hero-wrapper {
-  position: relative;
-  min-height: 100dvh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  background-color: var(--primary);
-}
-
-/* BACKGROUND */
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.hero-img-parallax {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.75) contrast(1.1);
-  transform: scale(1.1);
-}
-
-/* OVERLAY UNIFICADO (mejor control) */
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    var(--primary) 0%,
-    rgba(10, 26, 47, 0.85) 40%,
-    rgba(10, 26, 47, 0.2) 100%
-  );
-}
-
-/* CONTAINER */
-.hero-container {
-  position: relative;
-  z-index: 2;
-}
-
-/*evita que Bootstrap centre  raro */
-.hero-content {
-  text-align: left;
-}
-
-/* TITULO */
-.hero-title {
-  font-family: "Lora", serif;
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  color: white;
-  line-height: 1.15;
-  font-weight: 500;
-}
-
-/* TEXTO */
-.hero-description {
-  margin-top: 1.5rem;
-  font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 580px;
-  line-height: 1.7;
-}
-
-/* ACTIONS */
-.hero-actions {
-  margin-top: 2.5rem;
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-/* BOTÓN PRINCIPAL */
-.btn-boutique {
-  background: var(--accent);
-  color: var(--primary);
-  padding: 1rem 2rem;
-  border: none;
-  border-radius: 6px;
-  font-weight: 700;
-  transition: 0.3s;
-}
-
-.btn-boutique:hover {
-  transform: translateY(-3px);
-  background: white;
-}
-
-/* LINK */
-.btn-text-link {
-  background: transparent;
-  border: none;
-  color: white;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
+    position: relative;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--primary);
+    padding-top: 5rem;
   }
 
+  /* BACKGROUND */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    height: 100%;
+  }
+
+  .hero-img-parallax {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.75) contrast(1.1);
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  /* OVERLAY UNIFICADO (mejor control) */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      var(--primary) 0%,
+      rgba(10, 26, 47, 0.85) 40%,
+      rgba(10, 26, 47, 0.2) 100%
+    );
+  }
+
+  /* CONTAINER */
+  .hero-container {
+    position: relative;
+    z-index: 2;
+
+    padding: 100px;
+  }
+
+  /*evita que Bootstrap centre  raro */
+  .hero-content {
+    text-align: left;
+
+    border-radius: 20px;
+
+    background-color: rgba(10, 26, 47, 0.15);
+  }
+
+  /* TITULO */
   .hero-title {
-    text-align: center;
+    font-family: "Lora", serif;
+    font-size: clamp(2.1rem, 5vw, 4rem);
+    color: white;
+    line-height: 1.1;
+    font-weight: 400;
   }
 
+  /* TEXTO */
   .hero-description {
-    text-align: center;
-    margin-inline: auto;
+    margin-top: 1.5rem;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 580px;
+    line-height: 1.7;
+  }
+
+  /* ACTIONS */
+  .hero-actions {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  /* BOTÓN PRINCIPAL */
+  .btn-boutique {
+    background: var(--accent);
+    color: var(--primary);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    transition: 0.3s;
+  }
+
+  .btn-boutique:hover {
+    transform: translateY(-3px);
+    background: white;
   }
 
   .btn-text-link {
-    justify-content: center;
+    background: transparent;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    animation: asx 1s;
   }
-}
-</style>
 
+  .btn-text-link:hover {
+    transform: translateY(-5px);
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .hero-container {
+      padding: 50px;
+    }
+
+    .hero-title {
+      text-align: center;
+    }
+
+    .hero-description {
+      text-align: center;
+      margin-inline: auto;
+    }
+
+    .btn-text-link {
+      justify-content: center;
+    }
+  }
+</style>
 
 <script>
   const setupHero = () => {

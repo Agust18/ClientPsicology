@@ -1,13 +1,4 @@
-/* =========================
-   0. IMPORTS (SIEMPRE ARRIBA)
-========================= */
-
 @import "bootstrap/dist/css/bootstrap.min.css";
-
-
-/* =========================
-   1. RESET
-========================= */
 
 * {
   box-sizing: border-box;
@@ -22,25 +13,7 @@ body {
   background-color: #0a1a2f;
   -webkit-font-smoothing: antialiased;
 
-  /* 👇 espacio para navbar fijo */
-
 }
-
-
-/* =========================
-   2. VARIABLES
-========================= */
-
-:root {
-  --primary: #0a1a2f;
-  --accent: #b4935a;
-
-
-}
-
-/* =========================
-   3. TIPOGRAFÍAS
-========================= */
 
 @font-face {
   font-family: 'Inter';
@@ -74,10 +47,6 @@ body {
   font-display: swap;
 }
 
-/* =========================
-   4. TIPOGRAFÍA GLOBAL
-========================= */
-
 body,
 p,
 .hero-description {
@@ -90,59 +59,15 @@ h2,
 h3,
 .hero-title {
   font-family: 'Lora', serif;
-  font-weight: 500;
+
+
 }
 
-/* =========================
-   5. UTILIDADES
-========================= */
 
 .text-accent {
-  color: var(--accent) !important;
+  color: var(--accent);
 }
 
 .italic {
   font-style: italic;
-}
-
-/* =========================
-   6. CONTAINER (BOOTSTRAP STYLE)
-========================= */
-
-.container {
-  width: 100%;
-  padding-right: var(--bs-gutter-x, .75rem);
-  padding-left: var(--bs-gutter-x, .75rem);
-  margin: 0 auto;
-}
-
-/* breakpoints */
-@media (min-width: 576px) {
-  .container {
-    max-width: 540px;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 720px;
-  }
-}
-
-@media (min-width: 992px) {
-  .container {
-    max-width: 960px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1140px;
-  }
-}
-
-@media (min-width: 1400px) {
-  .container {
-    max-width: 1320px;
-  }
 }
