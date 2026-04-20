@@ -2,11 +2,20 @@
 import { Image } from "astro:assets";
 import heroImg from "../../assets/images/hero.jpg";
 import { heroData } from "../../data/hero.js";
+// import heroVideo from "../../assets/videos/hero.mp4";
 ---
 
 <section id="inicio" class="hero-wrapper">
   <div class="hero-bg">
-    <Image
+    <video
+      id="heroVideo"
+      class="hero-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      poster="/images/hero.jpg"></video>
+    <!-- <Image
       src={heroImg}
       width={1920}
       height={1080}
@@ -16,7 +25,7 @@ import { heroData } from "../../data/hero.js";
       class="hero-img-parallax"
       loading="eager"
       fetchpriority="high"
-    />
+    /> -->
 
     <div class="hero-overlay"></div>
   </div>
@@ -24,7 +33,7 @@ import { heroData } from "../../data/hero.js";
   <div class="container hero-container">
     <div class="row justify-content-start">
       <!--columna con alineación real -->
-      <div class="col-12 col-lg-7 hero-content animate-fade-in-up">
+      <div class="col-12 col-lg-7 hero-content fade-up">
         <h1 class="hero-title">
           {heroData.title1}
           <span class="text-accent italic animate-pulse-soft">
@@ -79,19 +88,51 @@ import { heroData } from "../../data/hero.js";
     position: absolute;
     inset: 0;
     z-index: 0;
-    border-radius: 20px;
+
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     height: 100%;
   }
 
-  .hero-img-parallax {
+  /* .hero-img-parallax {
     width: 100%;
     height: 100%;
     object-fit: cover;
     filter: brightness(0.75) contrast(1.1);
     transform: scale(1.1);
     transition: transform 0.2s ease-in-out;
+  } */
+
+  .hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 110%;
+    height: 110%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    filter: brightness(0.7) contrast(1.1);
+  }
+
+  /* cuando carga */
+  .hero-video.loaded {
+    opacity: 1;
+  }
+
+  /* ANIMACIÓN TEXTO */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   /* OVERLAY UNIFICADO (mejor control) */
@@ -101,7 +142,7 @@ import { heroData } from "../../data/hero.js";
     background: linear-gradient(
       to right,
       var(--primary) 0%,
-      rgba(10, 26, 47, 0.85) 40%,
+      rgba(10, 26, 47, 0.85) 30%,
       rgba(10, 26, 47, 0.2) 100%
     );
   }
@@ -116,18 +157,23 @@ import { heroData } from "../../data/hero.js";
   /*evita que Bootstrap centre  raro */
   .hero-content {
     text-align: left;
-    border-radius: 20px;
-    background-color: rgba(10, 26, 47, 0.15);
-    padding: 2rem;
+    background-color: rgba(10, 26, 47, 0.01);
+    max-width: 700px;
   }
 
   /* TITULO */
   .hero-title {
     font-family: "Lora", serif;
-    font-size: clamp(2.1rem, 5vw, 4rem);
+    font-size: clamp(2.1rem, 5vw, 4.5rem);
     color: white;
     line-height: 1.1;
-    font-weight: 400;
+    font-weight: 415;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    text-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    letter-spacing: -0.025em;
+    margin-bottom: 1.2rem;
+    line-height: 1.05;
   }
 
   /* TEXTO */
@@ -138,6 +184,11 @@ import { heroData } from "../../data/hero.js";
     max-width: 580px;
     line-height: 1.7;
     margin-block: 1rem;
+    font-size: clamp(1.05rem, 1.2vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 560px;
+    line-height: 1.6;
+    margin-top: 1rem;
   }
 
   /* ACTIONS */
@@ -145,6 +196,10 @@ import { heroData } from "../../data/hero.js";
     margin-top: 2.5rem;
     display: flex;
     gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 2.2rem;
+    display: flex;
+    gap: 1rem;
     flex-wrap: wrap;
   }
 
@@ -157,6 +212,7 @@ import { heroData } from "../../data/hero.js";
     border-radius: 6px;
     font-weight: 700;
     transition: 0.3s;
+    cursor: pointer;
   }
 
   .btn-boutique:hover {
@@ -166,12 +222,15 @@ import { heroData } from "../../data/hero.js";
 
   .btn-text-link {
     background: transparent;
-    border: none;
     color: white;
     display: flex;
     align-items: center;
     gap: 0.6rem;
     animation: asx 1s;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 10px;
+    border: 1px solid var(--accent);
   }
 
   .btn-text-link:hover {
@@ -186,20 +245,26 @@ import { heroData } from "../../data/hero.js";
     }
 
     .hero-container {
-      padding: 50px;
+      padding: 1.5rem;
+    }
+
+    .hero-overlay {
+      background: rgba(10, 26, 47, 0.75);
+    }
+    .hero-title,
+    .hero-description {
+      text-align: center;
     }
 
     .hero-content {
       padding: 1.5rem;
     }
-
-    .hero-title {
-      text-align: center;
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
     }
-
-    .hero-description {
-      text-align: center;
-      margin-inline: auto;
+    .hero-actions {
+      flex-direction: column;
     }
 
     .btn-text-link {
@@ -228,4 +293,21 @@ import { heroData } from "../../data/hero.js";
   };
 
   setupHero();
+</script>
+
+<script is:inline>
+  const video = document.getElementById("heroVideo");
+
+  if (video) {
+    const isMobile = window.innerWidth <= 768;
+
+    video.src = isMobile
+      ? "/videos/hero-mobile.mp4"
+      : "/videos/hero-desktop.mp4";
+
+    // fade cuando carga
+    video.addEventListener("loadeddata", () => {
+      video.classList.add("loaded");
+    });
+  }
 </script>

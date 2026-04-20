@@ -99,8 +99,8 @@
     --nav-h: 70px;
     --accent: #b4935a;
     --primary: #0a1a2f;
-    --glass-bg: rgba(8, 18, 38, 0.45);
-    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-bg: rgba(8, 18, 38, 0);
+    --glass-border: rgba(255, 255, 255, 0.5);
     --link-idle: rgba(255, 255, 255, 0.82);
     --link-hover: #ffffff;
     --link-active: #ffffff;
@@ -116,9 +116,9 @@
     z-index: 900;
     height: var(--nav-h);
     background: var(--glass-bg);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--glass-border);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+    border-bottom: 0.5px solid var(--glass-border);
     transition:
       background 0.35s var(--ease),
       box-shadow 0.35s var(--ease),
@@ -126,8 +126,8 @@
   }
 
   .nav.scrolled {
-    background: rgba(8, 18, 38, 0.82);
-    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.35);
+    background: rgba(8, 18, 38, 0.1);
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.5);
     height: 62px;
   }
 
