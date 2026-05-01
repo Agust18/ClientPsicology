@@ -51,20 +51,7 @@ import { heroData } from "../../data/hero.js";
           </button>
 
           <button class="btn-text-link">
-            <span class="border-bottom-accent">
-              {heroData.ctaSecondary}
-            </span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 -960 960 960"
-              fill="currentColor"
-            >
-              <path
-                d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"
-              ></path>
-            </svg>
+            {heroData.ctaSecondary}
           </button>
         </div>
       </div>
@@ -146,9 +133,13 @@ import { heroData } from "../../data/hero.js";
   .hero-container {
     position: relative;
     z-index: 2;
-
     /* 1.5rem en móvil, crece hasta 100px en desktop */
     padding-inline: clamp(1.5rem, 8vw, 100px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
   }
 
   /*evita que Bootstrap centre  raro */
@@ -182,15 +173,16 @@ import { heroData } from "../../data/hero.js";
     gap: 1.2rem;
     margin-top: 2.5rem;
     flex-wrap: nowrap; /* Evita que se amontonen uno abajo del otro */
+    max-width: 100%;
   }
 
   /* BOTÓN PRINCIPAL */
   .btn-boutique {
     display: inline-block;
-    background: var(--accent);
-    color: var(--primary);
-    padding: 12px 32px;
-    border: 1px solid var(--accent); /* Para que mida igual que el otro */
+    background: var(--primary);
+    color: var(--accent);
+    padding: 15px 32px;
+    border: 0.3px solid var(--accent); /* Para que mida igual que el otro */
     font-weight: 700;
 
     /* Ajuste automático al texto */
@@ -212,6 +204,7 @@ import { heroData } from "../../data/hero.js";
     letter-spacing: 0.1em;
     text-decoration: none;
     transition: all 0.3s ease;
+    cursor: pointer;
   }
 
   .btn-boutique:hover {
@@ -223,10 +216,10 @@ import { heroData } from "../../data/hero.js";
 
   .btn-text-link {
     background: transparent;
-    color: white;
     border: 1px solid rgba(255, 255, 255, 0.3); /* Borde blanco sutil */
-    font-weight: 600;
+    font-weight: 700;
     backdrop-filter: blur(10px);
+    cursor: pointer;
 
     /* Ajuste automático al texto */
     width: fit-content;
@@ -247,12 +240,13 @@ import { heroData } from "../../data/hero.js";
     letter-spacing: 0.1em;
     text-decoration: none;
     transition: all 0.3s ease;
+    color: white;
   }
 
   .btn-text-link:hover {
     background: rgba(255, 255, 255, 0.1);
-    border-color: var(--accent);
-    color: var(--accent);
+    border-color: white;
+    background-clip: border-box;
   }
 
   /* MOBILE */
@@ -283,16 +277,13 @@ import { heroData } from "../../data/hero.js";
     }
 
     .btn-boutique {
-      padding: 1rem 1.8rem;
       width: 80%;
       align-items: center;
     }
 
     .btn-text-link {
-      justify-content: center;
-      padding: 0.8rem 1rem;
       width: 80%;
-      align-items: center;
+      font-size: 0.75rem;
     }
   }
 </style>
