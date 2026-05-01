@@ -1,5 +1,6 @@
 ---
 const anioActual = new Date().getFullYear();
+import Logo from "./Logo.astro";
 ---
 
 <footer class="pie-pagina" aria-labelledby="titulo-pie-pagina">
@@ -13,9 +14,7 @@ const anioActual = new Date().getFullYear();
         <div class="pie-pagina__grilla">
             <!-- Columna 1: Identidad de marca -->
             <div class="pie-pagina__marca">
-                <p class="pie-pagina__logo" aria-label="Psicología Boutique">
-                    Psicología <em>Boutique</em>
-                </p>
+                <Logo />
                 <p class="pie-pagina__descripcion">
                     Acompañamiento psicológico especializado, centrado en la
                     persona, con un abordaje humano, integrador y de alta
@@ -28,7 +27,7 @@ const anioActual = new Date().getFullYear();
                     role="list"
                     aria-label="Redes sociales"
                 >
-                    <li>
+                    <!-- <li>
                         <a
                             href="https://instagram.com"
                             class="pie-pagina__enlace-red"
@@ -67,8 +66,8 @@ const anioActual = new Date().getFullYear();
                             </svg>
                             <span class="sr-only">Instagram</span>
                         </a>
-                    </li>
-                    <li>
+                    </li> -->
+                    <!-- <li>
                         <a
                             href="https://linkedin.com"
                             class="pie-pagina__enlace-red"
@@ -100,7 +99,7 @@ const anioActual = new Date().getFullYear();
                             </svg>
                             <span class="sr-only">LinkedIn</span>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
 
@@ -122,11 +121,6 @@ const anioActual = new Date().getFullYear();
                     <li>
                         <a href="#areas-intervencion" class="pie-pagina__enlace"
                             >Servicios</a
-                        >
-                    </li>
-                    <li>
-                        <a href="#filosofia" class="pie-pagina__enlace"
-                            >Filosofía</a
                         >
                     </li>
                     <li>
@@ -194,219 +188,128 @@ const anioActual = new Date().getFullYear();
         </div>
     </div>
 </footer>
-
 <style>
-    /* 
-     TOKENS locales (heredan de :root del proyecto)
-      */
     .pie-pagina {
-        --pie-fondo: #05101f;
-        --pie-borde: rgba(255, 255, 255, 0.08);
-        --pie-texto: rgba(255, 255, 255, 0.55);
-        --pie-texto-hover: #ffffff;
-        --pie-acento: #b4935a;
-        --pie-titulo: rgba(255, 255, 255, 0.9);
-        --pie-espacio: clamp(40px, 6vw, 80px);
-        --pie-radio: 6px;
-        --transicion: 0.22s ease;
-    }
+        /* Redefinimos localmente para evitar conflictos */
+        --p-fondo: #03070d;
+        --p-borde: rgba(180, 147, 90, 0.1);
+        --p-oro: #b4935a;
+        --p-texto: rgba(255, 255, 255, 0.5);
 
-    /* ============================================================
-     SHELL
-     ============================================================ */
-    .pie-pagina {
-        background-color: var(--pie-fondo);
-        border-top: 1px solid var(--pie-borde);
-        padding-block: var(--pie-espacio);
+        background-color: var(--p-fondo);
+        border-top: 1px solid var(--p-borde);
+        padding-block: clamp(60px, 10vh, 100px);
         width: 100%;
+        color: white;
     }
 
     .pie-pagina__contenedor {
         max-width: 1200px;
         margin-inline: auto;
-        padding-inline: clamp(16px, 4vw, 40px);
+        padding-inline: 2rem;
     }
 
-    /* ============================================================
-     GRILLA DE 4 COLUMNAS
-     ============================================================ */
+    /* GRILLA: Forzamos el comportamiento para que no se amontone */
     .pie-pagina__grilla {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 40px 32px;
+        gap: 3rem;
     }
 
-    @media (min-width: 576px) {
+    /* Desktop: 4 columnas con la primera más ancha */
+    @media (min-width: 992px) {
         .pie-pagina__grilla {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1.5fr 0.8fr 0.8fr 0.8fr;
+            gap: 2rem;
         }
     }
 
-    @media (min-width: 900px) {
-        .pie-pagina__grilla {
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-        }
-    }
-
-    /* ============================================================
-     COLUMNA DE MARCA
-     ============================================================ */
+    /* Columna Marca */
     .pie-pagina__logo {
-        font-family: "Lora", Georgia, serif;
-        font-size: 1.1rem;
-        font-weight: 400;
-        color: #ffffff;
-        margin: 0 0 12px;
-        letter-spacing: 0.01em;
+        font-family: "Lora", serif;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: white;
     }
 
     .pie-pagina__logo em {
-        color: var(--pie-acento);
+        color: var(--p-oro);
         font-style: italic;
     }
 
     .pie-pagina__descripcion {
-        font-family: "Inter", sans-serif;
-        font-size: 0.85rem;
-        line-height: 1.75;
-        color: var(--pie-texto);
-        margin: 0 0 24px;
-        max-width: 28ch;
+        font-size: 0.9rem;
+        line-height: 1.8;
+        color: var(--p-texto);
+        max-width: 30ch;
+        font-weight: 300;
     }
 
-    /* ============================================================
-     REDES SOCIALES
-     ============================================================ */
-    .pie-pagina__redes {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        gap: 10px;
-    }
-
-    .pie-pagina__enlace-red {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        color: var(--pie-texto);
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid var(--pie-borde);
-        text-decoration: none;
-        transition:
-            color var(--transicion),
-            background var(--transicion),
-            border-color var(--transicion),
-            transform var(--transicion);
-    }
-
-    .pie-pagina__enlace-red:hover,
-    .pie-pagina__enlace-red:focus-visible {
-        color: var(--pie-acento);
-        background: rgba(180, 147, 90, 0.1);
-        border-color: rgba(180, 147, 90, 0.35);
-        transform: translateY(-2px);
-        outline: none;
-    }
-
-    /* ============================================================
-     COLUMNAS DE NAVEGACIÓN
-     ============================================================ */
-    .pie-pagina__columna {
-        display: flex;
-        flex-direction: column;
-    }
-
+    /* Títulos de columna: Estilo "Agencia" */
     .pie-pagina__titulo-columna {
-        font-family: "Lora", Georgia, serif;
-        font-size: 0.8rem;
-        font-weight: 500;
-        color: var(--pie-titulo);
-        letter-spacing: 0.1em;
+        font-size: 0.7rem;
         text-transform: uppercase;
-        margin: 0 0 18px;
+        letter-spacing: 0.2em;
+        color: white;
+        margin-bottom: 1.5rem;
+        opacity: 0.9;
     }
 
     .pie-pagina__lista {
         list-style: none;
-        margin: 0;
         padding: 0;
+        margin: 0;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 0.8rem;
     }
 
-    /* ============================================================
-     ENLACES
-     ============================================================ */
     .pie-pagina__enlace {
-        display: inline-block;
-        font-family: "Inter", sans-serif;
-        font-size: 0.875rem;
-        font-weight: 400;
-        color: var(--pie-texto);
+        color: var(--p-texto);
         text-decoration: none;
-        transition:
-            color var(--transicion),
-            transform var(--transicion);
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        display: inline-block;
     }
 
-    .pie-pagina__enlace:hover,
-    .pie-pagina__enlace:focus-visible {
-        color: var(--pie-texto-hover);
-        transform: translateX(3px);
-        outline: none;
-        text-decoration: underline;
-        text-underline-offset: 3px;
+    .pie-pagina__enlace:hover {
+        color: var(--p-oro);
+        transform: translateX(5px);
     }
 
-    /* Enlace destacado (CTA en lista) */
-    .pie-pagina__enlace--destacado {
-        color: var(--pie-acento);
-        font-weight: 500;
-    }
-
-    .pie-pagina__enlace--destacado:hover,
-    .pie-pagina__enlace--destacado:focus-visible {
-        color: #c9a96e;
-    }
-
-    /* ============================================================
-     FILA INFERIOR
-     ============================================================ */
+    /* Fila Inferior (Copyright) */
     .pie-pagina__inferior {
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--p-borde);
         display: flex;
         flex-direction: column;
-        gap: 4px;
-        align-items: flex-start;
-        margin-top: clamp(32px, 5vw, 56px);
-        padding-top: 24px;
-        border-top: 1px solid var(--pie-borde);
+        gap: 1rem;
+        justify-content: space-between;
+        align-items: center;
     }
 
     @media (min-width: 768px) {
         .pie-pagina__inferior {
             flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
         }
     }
 
     .pie-pagina__copyright,
     .pie-pagina__credenciales {
-        font-family: "Inter", sans-serif;
-        font-size: 0.78rem;
-        color: rgba(255, 255, 255, 0.38);
-        margin: 0;
-        line-height: 1.5;
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.3);
     }
 
-    /* ============================================================
-     ACCESIBILIDAD — Utilidad sr-only
-     ============================================================ */
+    .pie-pagina__enlace--destacado {
+        color: var(--p-oro);
+        font-weight: 500;
+        border: 1px solid var(--p-oro);
+        border-radius: 2px;
+        padding: 0.5rem 1rem;
+    }
+
+    /* Utilidad para ocultar (Accessibility) */
     .sr-only {
         position: absolute;
         width: 1px;
@@ -415,16 +318,6 @@ const anioActual = new Date().getFullYear();
         margin: -1px;
         overflow: hidden;
         clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
         border: 0;
-    }
-
-    /* ============================================================
-     FOCUS VISIBLE global para este componente
-     ============================================================ */
-    .pie-pagina *:focus-visible {
-        outline: 2px solid var(--pie-acento);
-        outline-offset: 3px;
-        border-radius: var(--pie-radio);
     }
 </style>

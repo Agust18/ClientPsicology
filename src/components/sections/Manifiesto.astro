@@ -1,0 +1,186 @@
+---
+import { manifiestoData } from "../../data/manifiesto";
+---
+
+<section class="manifiesto-stack" id="stack-section">
+  <div class="container">
+    <header class="stack-header">
+      <h2 class="lora">
+        {manifiestoData.title}
+        <br />
+        <span class="text-accent italic">{manifiestoData.emphasis}</span>
+      </h2>
+    </header>
+
+    <div class="stack-cards">
+      {
+        manifiestoData.blocks.map((block, index) => (
+          <div class="stack-card-wrapper">
+            <div class="stack-card">
+              <div class="card-grid">
+                <div class="card-info">
+                  <span class="num">0{index + 1}</span>
+                  <h3 class="lora">{block.tag}</h3>
+                </div>
+                <div class="card-text">
+                  <p>{block.text}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+<style is:global>
+  .manifiesto-stack {
+    /* Fondo más profundo para que el contenido "flote" */
+    background: radial-gradient(circle at center, #0a1322 0%, #050a12 100%);
+    padding-bottom: 20vh;
+  }
+
+  .stack-header {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .stack-header h2 {
+    /* Tipografía más imponente pero fina */
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: #ffffff;
+    line-height: 1.05;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+  }
+
+  .stack-cards {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px; /* Centramos el contenido para prolijidad */
+    margin: 0 auto;
+    padding-inline: 20px;
+  }
+
+  .stack-card-wrapper {
+    position: sticky;
+    top: 10vh;
+    padding-bottom: 8vh;
+    /* Eliminamos el color de fondo sólido para que el blur se vea real */
+    background: transparent;
+  }
+
+  .stack-card {
+    /* Glassmorphism nivel boutique */
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(25px) saturate(120%);
+    -webkit-backdrop-filter: blur(25px) saturate(120%);
+
+    /* Borde ultra fino con gradiente sutil */
+    border: 1px solid rgba(180, 147, 90, 0.15);
+    border-radius: 8px; /* Un poco más redondeado es más moderno */
+
+    padding: clamp(2.5rem, 6vw, 6rem);
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+
+    /* Sombra suave y amplia */
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
+    transition: transform 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(2rem, 5vw, 6rem);
+    width: 100%;
+  }
+
+  .card-info .num {
+    font-family: "Inter", sans-serif;
+    color: #b4935a; /* Tu oro de acento */
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    display: block;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+  }
+
+  .card-info h3 {
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    color: #ffffff;
+    line-height: 1.1;
+    font-weight: 400;
+  }
+
+  .card-text p {
+    font-family: "Lora", serif;
+    /* Color gris seda para no cansar la vista */
+    color: rgba(226, 232, 240, 0.7);
+    font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* Efecto decorativo: una línea dorada muy fina al inicio del párrafo */
+  .card-text {
+    position: relative;
+    border-left: 1px solid rgba(180, 147, 90, 0.2);
+    padding-left: 3rem;
+  }
+
+  @media (max-width: 991px) {
+    .card-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .card-text {
+      border-left: none;
+      padding-left: 0;
+      border-top: 1px solid rgba(180, 147, 90, 0.1);
+      padding-top: 1.5rem;
+    }
+    .stack-card {
+      padding: 2.5rem;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initStackCards = () => {
+    const cards = gsap.utils.toArray(".stack-card");
+
+    cards.forEach((card: any, index) => {
+      // No animamos la última carta
+      if (index === cards.length - 1) return;
+
+      gsap.to(card, {
+        scale: 0.95,
+        opacity: 0.9,
+        filter: "blur(15px)",
+        scrollTrigger: {
+          trigger: card,
+          start: "top 15vh",
+          endTrigger: ".manifiesto-stack",
+          end: "bottom bottom",
+          scrub: true,
+          pinSpacing: false,
+        },
+      });
+    });
+  };
+
+  initStackCards();
+  document.addEventListener("astro:after-swap", initStackCards);
+</script>

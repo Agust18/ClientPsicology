@@ -1,18 +1,186 @@
 ---
 import "../styles/global.css";
+import Head from "../components/layout/Head.astro";
+import Logo from "../components/layout/Logo.astro";
 const { title, description } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <title>{title}</title>
-        <meta name="description" content={description} />
+        <Head title={title} description={description} />
     </head>
+
     <body>
+        <!-- <div id="preloader" class="preloader">
+            <div class="loader-panel panel-left"></div>
+            <div class="loader-panel panel-right"></div>
+
+            <div class="loader-content">
+                <div class="loader-logo-wrapper">
+                    <div id="loader-logo" class="loader-logo">
+                        <Logo />
+                    </div>
+                    <div class="logo-shimmer"></div>
+                </div>
+                <div id="loader-text" class="loader-text">CUIDAMOS DE VOS</div>
+            </div>
+        </div> -->
         <slot />
     </body>
 </html>
+<!-- <style is:global>
+    .preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: transparent; /* Los paneles dan el color */
+    }
+
+    .loader-panel {
+        position: absolute;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        background: #0a1a2f; /* Tu color --primary */
+        z-index: 1;
+    }
+
+    .panel-left {
+        left: 0;
+    }
+    .panel-right {
+        right: 0;
+    }
+
+    .loader-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        /* Evita que el escalado corte el logo */
+        padding: 40px;
+    }
+
+    .loader-logo {
+        width: clamp(220px, 25vw, 320px);
+        margin-bottom: 24px;
+        /* Crítico para que se vea sólido desde el frame 1 */
+        opacity: 0;
+        will-change: transform, opacity, filter;
+    }
+
+    .loader-text {
+        font-size: 0.7rem;
+        letter-spacing: 0.6em; /* Más elegancia */
+        text-transform: uppercase;
+        color: #b4935a;
+        opacity: 0;
+        font-weight: 400;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    import { gsap } from "gsap";
+
+    const masterTl = gsap.timeline();
+
+    // 1. Configuración inicial: Forzamos el estado invisible
+    gsap.set(["#loader-logo", "#loader-text"], {
+        opacity: 0,
+        scale: 0.95, // Menos agresivo para que no parezca que viene de tan lejos
+        y: 15,
+    });
+
+    function createIntroTl() {
+        const tl = gsap.timeline();
+
+        tl.to("#loader-logo", {
+            opacity: 1, // Opacidad total
+            scale: 1,
+            y: 0,
+            duration: 1.6,
+            ease: "expo.out",
+        }).to(
+            "#loader-text",
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1.4,
+                ease: "power3.out",
+            },
+            "-=1.0",
+        ); // Aumentamos el solapamiento para que el texto "nazca" mientras el logo se asienta
+
+        return tl;
+    }
+
+    function createExitTl() {
+        const tl = gsap.timeline();
+
+        // Salida elegante: El logo sube y se desvanece
+        tl.to(["#loader-logo", "#loader-text"], {
+            opacity: 0,
+            y: -30,
+            duration: 0.7,
+            ease: "power4.in",
+        })
+            .to(
+                ".panel-left",
+                {
+                    xPercent: -100,
+                    duration: 1.2,
+                    ease: "expo.inOut",
+                },
+                "-=0.2",
+            ) // Empieza la apertura un poco antes de que el logo desaparezca del todo
+            .to(
+                ".panel-right",
+                {
+                    xPercent: 100,
+                    duration: 1.2,
+                    ease: "expo.inOut",
+                },
+                "<",
+            )
+            .set("#preloader", { display: "none" });
+
+        return tl;
+    }
+
+    // --- EJECUCIÓN ---
+
+    masterTl.add(createIntroTl());
+
+    const pageLoaded = new Promise((resolve) => {
+        window.addEventListener("load", resolve);
+    });
+
+    // Efecto de respiración (Glow)
+    // Lo ponemos en una variable para poder matarlo específicamente
+    const glow = gsap.to("#loader-logo", {
+        filter: "drop-shadow(0 0 15px rgba(180, 147, 90, 0.5))",
+        repeat: -1,
+        yoyo: true,
+        duration: 2,
+        ease: "sine.inOut",
+        paused: true, // Empieza pausado
+    });
+
+    // Iniciar el glow solo cuando la intro casi termina
+    masterTl.add(() => glow.play(), "-=0.5");
+
+    pageLoaded.then(() => {
+        // Detener el glow suavemente antes de salir
+        glow.pause();
+
+        // Esperamos 1.2s para que el usuario pueda leer el texto
+        gsap.delayedCall(1.2, () => {
+            createExitTl();
+        });
+    });
+</script> -->

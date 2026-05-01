@@ -1,0 +1,371 @@
+---
+// import { Image } from "astro:assets";
+// import heroImg from "../../assets/images/hero.jpg";
+import { heroData } from "../../data/hero.js";
+// import heroVideo from "../../assets/videos/hero.mp4";
+---
+
+<section id="inicio" class="hero-wrapper">
+  <div class="hero-bg">
+    <video
+      id="heroVideo"
+      class="hero-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      poster="/assets/images/hero.jpg"></video>
+    <!-- <Image
+      src={heroImg}
+      width={1920}
+      height={1080}
+      format="webp"
+      quality="80"
+      alt="Consultorio clínico profesional"
+      class="hero-img-parallax"
+      loading="eager"
+      fetchpriority="high"
+    /> -->
+
+    <div class="hero-overlay"></div>
+  </div>
+
+  <div class="container hero-container">
+    <div class="row justify-content-start">
+      <!--columna con alineación real -->
+      <div class="col-12 col-lg-7 hero-content">
+        <h1 class="title-display hero-title">
+          {heroData.title1}
+          <span class="text-accent italic animate-pulse-soft">
+            {heroData.titleEmphasis}
+          </span>
+        </h1>
+
+        <p class="text-lead hero-description">
+          {heroData.description}
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn-boutique">
+            {heroData.ctaPrimary}
+          </button>
+
+          <button class="btn-text-link">
+            <span class="border-bottom-accent">
+              {heroData.ctaSecondary}
+            </span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 -960 960 960"
+              fill="currentColor"
+            >
+              <path
+                d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-wrapper {
+    position: relative;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--primary);
+
+    /* AJUSTE: Quitamos el padding-top fijo y usamos padding vertical 
+       esto asegura que el contenido nunca toque los bordes */
+    padding-block: 8rem 5rem;
+  }
+
+  /* BACKGROUND */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    height: 100%;
+  }
+
+  /* .hero-img-parallax {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.75) contrast(1.1);
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out;
+  } */
+
+  .hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 105%;
+    height: 105%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    filter: brightness(0.2) contrast(1);
+    /* Le dice a la placa de video que se prepare para mover este elemento */
+    will-change: transform;
+    /* Suaviza los saltos del scroll del mouse */
+    transition: transform 0.15s ease-out;
+  }
+
+  /* cuando carga */
+  .hero-video.loaded {
+    opacity: 1; /* carga el video con opacidad */
+    will-change: auto; /* deja de indicarle a la placa que se prepare */
+    transition: opacity 1s ease; /*1s para que cargue el video*/
+  }
+
+  /* OVERLAY UNIFICADO (mejor control) */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      75deg,
+      rgba(5, 10, 18, 0.7) 0%,
+      /* Casi negro en el texto */ rgba(5, 10, 18, 0.1) 20%,
+      /* Se aclara al centro */ rgba(5, 10, 18, 0.1) 100%
+        /* Deja ver el video a la derecha */
+    );
+  }
+
+  /* CONTAINER */
+  .hero-container {
+    position: relative;
+    z-index: 2;
+
+    /* 1.5rem en móvil, crece hasta 100px en desktop */
+    padding-inline: clamp(1.5rem, 8vw, 100px);
+  }
+
+  /*evita que Bootstrap centre  raro */
+  .hero-content {
+    text-align: left;
+    background-color: rgba(10, 26, 47, 0.01);
+    max-width: 700px;
+  }
+
+  /* TITULO */
+  .hero-title {
+    /* El global no sabe qué tamaño quieres en el Hero, así que lo pones aquí */
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-description {
+    /* El global no sabe cuánto debe medir de ancho tu párrafo en el Hero */
+    max-width: 560px;
+    margin-top: 1rem;
+
+    /* Si quieres que en el Hero el texto sea un pelín más grande que el .text-lead normal */
+    font-size: 1.2rem;
+  }
+
+  /* ACTIONS */
+  .hero-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Crucial: Alinea los botones por su centro */
+    gap: 1.2rem;
+    margin-top: 2.5rem;
+    flex-wrap: nowrap; /* Evita que se amontonen uno abajo del otro */
+  }
+
+  /* BOTÓN PRINCIPAL */
+  .btn-boutique {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--primary);
+    padding: 12px 32px;
+    border: 1px solid var(--accent); /* Para que mida igual que el otro */
+    font-weight: 700;
+
+    /* Ajuste automático al texto */
+    width: fit-content;
+    white-space: nowrap; /* El texto NUNCA saltará de línea */
+
+    /* Estructura */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Tamaño consistente */
+    min-height: 52px; /* Altura fija para que siempre estén alineados */
+    padding-inline: 32px; /* Padding solo a los lados para que crezca horizontalmente */
+
+    /* Tipografía */
+    font-size: 0.85rem; /* Puedes variarlo y el botón no se deformará */
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-boutique:hover {
+    transform: translateY(-3px);
+    background: white;
+    border-color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-text-link {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Borde blanco sutil */
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+
+    /* Ajuste automático al texto */
+    width: fit-content;
+    white-space: nowrap; /* El texto NUNCA saltará de línea */
+
+    /* Estructura */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Tamaño consistente */
+    min-height: 52px; /* Altura fija para que siempre estén alineados */
+    padding-inline: 32px; /* Padding solo a los lados para que crezca horizontalmente */
+
+    /* Tipografía */
+    font-size: 0.85rem; /* Puedes variarlo y el botón no se deformará */
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-text-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .hero-container {
+      padding: 1.5rem;
+    }
+
+    .hero-overlay {
+      background: rgba(10, 26, 47, 0.1);
+    }
+    .hero-title,
+    .hero-description {
+      text-align: center;
+    }
+
+    .hero-content {
+      padding: 1.5rem;
+    }
+    .hero-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn-boutique {
+      padding: 1rem 1.8rem;
+      width: 80%;
+      align-items: center;
+    }
+
+    .btn-text-link {
+      justify-content: center;
+      padding: 0.8rem 1rem;
+      width: 80%;
+      align-items: center;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+
+  const setupHeroVisuals = () => {
+    const content = document.querySelector(".hero-content");
+    if (!content) return;
+
+    // Usamos fromTo para asegurar que GSAP tome el control total del estado A y B
+    const tl = gsap.timeline({ paused: true });
+
+    tl.fromTo(
+      ".hero-title",
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1.2, ease: "power4.out" },
+    )
+      .fromTo(
+        ".hero-description",
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, ease: "power3.out" },
+        "-=0.8",
+      )
+      .fromTo(
+        ".hero-actions button",
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: "power3.out" },
+        "-=0.6",
+      );
+
+    // Guardamos la animación en window para que el Script 2 pueda darle PLAY
+    (window as any).heroReveal = tl;
+  };
+
+  setupHeroVisuals();
+  document.addEventListener("astro:after-swap", setupHeroVisuals);
+</script>
+
+<script>
+  (function () {
+    const video = document.getElementById(
+      "heroVideo",
+    ) as HTMLVideoElement | null;
+
+    const startReveal = () => {
+      const reveal = (window as any).heroReveal;
+      if (reveal && reveal.progress() === 0) {
+        // Si no ha empezado...
+        if (video) video.classList.add("loaded");
+        reveal.play();
+      }
+    };
+
+    if (video) {
+      const isMobile = window.innerWidth <= 768;
+      video.src = isMobile
+        ? "/assets/videos/hero-mobile.mp4"
+        : "/assets/videos/hero-desktop.mp4";
+
+      // Intentar disparar cuando el video esté listo
+      video.addEventListener("loadeddata", startReveal);
+
+      // Si el video falla (error 404, etc), mostrar texto igual
+      video.addEventListener("error", startReveal);
+
+      // Si el video ya estaba en caché, loadeddata no siempre salta
+      if (video.readyState >= 3) startReveal();
+    }
+
+    // EL SALVAVIDAS: Si en 1 segundo nada apareció, lo forzamos.
+    // Esto arregla el problema de que el texto "desaparezca" para siempre.
+    setTimeout(startReveal, 1000);
+  })();
+</script>

@@ -1,20 +1,66 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 
-* {
+/* 1. Definición de Variables */
+:root {
+  /* Fondo mucho más profundo y elegante */
+  --primary: #03070d;
+  --secondary: #0a1322;
+  /* Para secciones con un ligero contraste */
+
+  /* Un oro más refinado (menos amarillo, más desaturado) */
+  --accent: #b4935a;
+  --accent-rgb: 180, 147, 90;
+
+  /* Texto: El blanco puro cansa; usamos un blanco "seda" */
+  --text-light: rgba(226, 232, 240, 0.9);
+  --text-dim: rgba(226, 232, 240, 0.6);
+
+  --transition-boutique: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+/* 2. Reset y Base Profesional */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-html,
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
   width: 100%;
+  min-height: 100%;
   overflow-x: hidden;
-  background-color: #0a1a2f;
-  -webkit-font-smoothing: antialiased;
+  background-color: var(--primary);
+  /* Vital para que no haya parpadeos blancos */
+  color: var(--text-light);
 
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  /* Un poco más de aire para el lujo */
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
 }
 
+/* Títulos con un toque más editorial */
+h1,
+h2,
+h3 {
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  /* En Lora, el peso 400/500 se ve más premium que el negrita */
+  line-height: 1.1;
+  color: #ffffff;
+  margin-top: 0;
+}
+
+/* 3. Carga de Fuentes Locales */
 @font-face {
   font-family: 'Inter';
   src: url('../assets/fonts/inter-v20-latin-regular.woff2') format('woff2');
@@ -47,27 +93,90 @@ body {
   font-display: swap;
 }
 
-body,
-p,
-.hero-description {
+/* 4. Títulos y Clases de Estilo */
+
+.title-display {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+/* Estilo base para todos los textos */
+p {
   font-family: 'Inter', sans-serif;
-  color: white;
-}
-
-h1,
-h2,
-h3,
-.hero-title {
-  font-family: 'Lora', serif;
-
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1rem;
+  text-wrap: pretty;
 
 }
 
+/* Clase para descripciones destacadas */
+.text-lead {
+  /* No necesitas repetir font-family ni font-weight si ya están en el p */
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.95);
+  text-wrap: pretty;
+}
 
+/* 5. Utilidades y Helpers */
 .text-accent {
   color: var(--accent);
 }
 
+
+
+/* Limpieza de estilos de Bootstrap */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: 0.3s ease;
+}
+
+button {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Helper para el Manifiesto Compacto */
+/* .min-vh-70 {
+  min-height: 70vh;
+} */
+
+
+/* El toque de clase en los textos en cursiva */
 .italic {
+  font-family: 'Lora', serif;
   font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  /* Las cursivas no suelen llevar tracking negativo */
+}
+
+/* Una selección de texto que combine con tu marca */
+::selection {
+  background-color: var(--accent);
+  color: var(--primary);
+}
+
+/* Scrollbar personalizada para que no rompa la estética oscura */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(180, 147, 90, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
 }

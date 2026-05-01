@@ -1,0 +1,230 @@
+---
+import { EnfoqueData } from "../../data/Enfoque";
+---
+
+<section class="enfoque-wrapper">
+    <div class="container">
+        <!-- Encabezado con jerarquía visual -->
+        <div class="enfoque-header">
+            <h2 class="title-display enfoque-title fade-in">
+                {EnfoqueData.title}
+            </h2>
+            <h3 class="text-accent enfoque-subtitle fade-in">
+                {EnfoqueData.highlight}
+            </h3>
+        </div>
+
+        <!-- Contenedor Principal (The Glass Box) -->
+        <div class="enfoque-card">
+            <!-- Introducción con tipografía Lora -->
+            <div class="intro-container">
+                {
+                    EnfoqueData.intro.map((paragraph) => (
+                        <p class="text-lead fade-in">{paragraph}</p>
+                    ))
+                }
+            </div>
+
+            <!-- Principios / Ejes -->
+            <div class="principles-grid">
+                {
+                    EnfoqueData.principles.map((item) => (
+                        <div class="principle-item fade-in">
+                            <div class="principle-dot" />
+                            <p class="text-lead">{item}</p>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <!-- Sección Equipo e Interdisciplina -->
+            <div class="disciplines-section fade-in">
+                <p class="text-lead">
+                    {EnfoqueData.teamIntro}
+                </p>
+
+                <div class="disciplines-container">
+                    {
+                        EnfoqueData.disciplines.map((discipline) => (
+                            <span class="discipline-badge">{discipline}</span>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .enfoque-wrapper {
+        background-color: #03070d; /* Fondo unificado con Hero y Footer */
+        padding: 10rem 1.5rem;
+        color: white;
+        position: relative;
+        overflow: hidden;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .enfoque-header {
+        margin-bottom: 4.5rem;
+        text-align: center;
+    }
+
+    /* La Card con efecto Glass sutil */
+    .enfoque-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 2px; /* Menos redondeado = más serio/boutique */
+        padding: 4rem;
+        position: relative;
+    }
+
+    .principles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+        margin: 4rem 0;
+    }
+
+    .principle-item {
+        display: flex;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+
+    .principle-dot {
+        width: 6px;
+        height: 6px;
+        background-color: var(--accent);
+        border-radius: 50%;
+        margin-top: 0.7rem;
+        flex-shrink: 0;
+        box-shadow: 0 0 12px rgba(180, 147, 90, 0.4);
+    }
+
+    .disciplines-section {
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: 4rem;
+    }
+
+    .disciplines-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 2.2rem;
+        margin-bottom: 2rem;
+    }
+
+    .discipline-badge {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.75rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: #e2e8f0;
+        border-radius: 1px;
+        text-transform: uppercase;
+        transition: all 1.5s ease;
+        letter-spacing: 0.15em;
+    }
+
+    .discipline-badge:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        background: rgba(180, 147, 90, 0.05);
+    }
+
+    .intro-container p {
+        text-wrap: pretty; /* Evita palabras huérfanas al final */
+        line-height: 1.7; /* Un poco más de aire para tipografía elegante */
+        margin-bottom: 1.5rem;
+    }
+
+    @media (min-width: 1200px) {
+        .enfoque-header {
+            text-align: start;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .enfoque-title {
+            /**esto lo que hace es que el titulo se adapte al tamaño de la pantalla 
+        2.5rem es el tamaño minimo 
+        5vw es el tamaño promedio
+        5rem es el tamaño maximo
+        */
+
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            max-width: 800px;
+        }
+
+        .enfoque-wrapper {
+            padding-bottom: 10rem;
+        }
+
+        .disciplines-container {
+        }
+    }
+
+    @media (max-width: 768px) {
+        .enfoque-card {
+            padding: 2rem;
+        }
+
+        .enfoque-title {
+            font-size: clamp(2rem, 8vw, 2.5rem);
+            text-align: center;
+            max-width: 100%;
+        }
+
+        .enfoque-wrapper {
+            padding: 7rem 1.5rem 0rem 1.5rem;
+        }
+        .intro-paragraph {
+            font-size: 0.9rem;
+        }
+
+        .intro-container {
+            text-wrap: pretty;
+            max-width: 75ch;
+        }
+        .enfoque-subtitle {
+            margin-top: 1.5rem;
+        }
+        .enfoque-wrapper {
+            padding-bottom: 7rem;
+        }
+
+        .intro-container p {
+            text-wrap: pretty; /* Evita palabras huérfanas al final */
+            line-height: 1.7; /* Un poco más de aire para tipografía elegante */
+            margin-bottom: 1rem;
+        }
+    }
+</style>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const animateEnfoque = () => {
+        // Animación de aparición escalonada para todos los elementos con .fade-in
+        gsap.from(".fade-in", {
+            scrollTrigger: {
+                trigger: ".enfoque-wrapper",
+                start: "top 80%",
+                toggleActions: "play none none none",
+            },
+            y: 30,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out",
+        });
+    };
+
+    animateEnfoque();
+    document.addEventListener("astro:after-swap", animateEnfoque);
+</script>
