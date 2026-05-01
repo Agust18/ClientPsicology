@@ -62,7 +62,7 @@ import { EnfoqueData } from "../../data/Enfoque";
         color: white;
         position: relative;
         overflow: hidden;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        /* box-shadow: 0 20px 50px -20px rgba(180, 147, 90, 0.3); */
     }
 
     .enfoque-header {
@@ -179,6 +179,7 @@ import { EnfoqueData } from "../../data/Enfoque";
 
         .enfoque-wrapper {
             padding: 7rem 1.5rem 0rem 1.5rem;
+            border-top: 1.2px solid rgba(255, 255, 255, 0.05);
         }
         .intro-paragraph {
             font-size: 0.9rem;
@@ -199,6 +200,13 @@ import { EnfoqueData } from "../../data/Enfoque";
             text-wrap: pretty; /* Evita palabras huérfanas al final */
             line-height: 1.7; /* Un poco más de aire para tipografía elegante */
             margin-bottom: 1rem;
+        }
+
+        .principles-grid {
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+            text-wrap: wrap;
         }
     }
 </style>
