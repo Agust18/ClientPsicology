@@ -63,63 +63,88 @@ import { EnfoqueData } from "../../data/Enfoque";
 <style>
     .enfoque-wrapper {
         background-color: #03070d;
-        padding: 8rem 1.5rem;
+        /* Padding fluido para que no quede tanto espacio muerto en móvil */
+        padding: clamp(4rem, 10vw, 8rem) 1.5rem;
         color: white;
         overflow: hidden;
     }
 
     .enfoque-header {
-        margin-bottom: 4rem;
+        margin-bottom: clamp(3rem, 5vw, 5rem);
         text-align: center;
     }
 
     .enfoque-title {
-        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-size: clamp(2.2rem, 5vw, 3.8rem);
         line-height: 1.1;
         margin-bottom: 1rem;
+        text-wrap: balance;
+    }
+
+    .enfoque-subtitle {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        opacity: 0.8;
     }
 
     .intro1 {
         color: var(--accent);
         font-weight: 600;
-        font-size: clamp(1.2rem, 1.5vw + 0.9rem, 1.5rem);
-        text-align: center; /* La intro queda mejor centrada */
+        font-size: clamp(1.2rem, 2vw, 1.6rem);
+        text-align: center;
+        margin-bottom: 2rem;
+        line-height: 1.4;
     }
 
     /* --- LA CARD (GLASS) --- */
     .enfoque-card {
         background: rgba(255, 255, 255, 0.02);
         border: 1px solid rgba(255, 255, 255, 0.05);
-        padding: 4rem;
+        /* Padding responsivo: mucho en PC, lo justo en móvil */
+        padding: clamp(2rem, 5vw, 5rem);
         max-width: 1000px;
         margin: 0 auto;
+        backdrop-filter: blur(10px);
+    }
+
+    .intro-container {
+        font-family: "Lora", serif; /* Si la tienes importada, aquí brilla */
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 1.5rem;
+        text-wrap: pretty;
     }
 
     /* --- GRID DE PRINCIPIOS --- */
     .principles-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2.5rem;
+        /* Ajustado para que en tablet no queden columnas muy flacas */
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 3rem;
         margin: 4rem 0;
     }
 
     .principle-item {
         display: flex;
         gap: 1.2rem;
+        align-items: flex-start;
     }
+
     .principle-dot {
-        width: 8px;
-        height: 8px;
+        width: 6px;
+        height: 6px;
         background-color: var(--accent);
         border-radius: 50%;
-        margin-top: 0.6rem;
+        margin-top: 0.7rem;
         flex-shrink: 0;
-        box-shadow: 0 0 10px var(--accent);
+        box-shadow: 0 0 12px var(--accent);
     }
 
     /* --- DISCIPLINAS --- */
     .disciplines-section {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
         padding-top: 3rem;
         margin-top: 2rem;
     }
@@ -127,65 +152,49 @@ import { EnfoqueData } from "../../data/Enfoque";
     .disciplines-container {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.8rem;
+        gap: 0.75rem;
         margin-top: 2rem;
+        justify-content: center; /* Centrado queda más elegante */
     }
 
     .discipline-badge {
-        padding: 0.5rem 1rem;
-        font-size: 0.7rem;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.65rem;
         background: rgba(255, 255, 255, 0.03);
         border: 1px solid rgba(255, 255, 255, 0.1);
-        color: #e2e8f0;
+        color: rgba(226, 232, 240, 0.8);
         text-transform: uppercase;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.15em;
+        transition: all 0.3s ease;
     }
 
     .discipline-badge:hover {
         border-color: var(--accent);
         color: var(--accent);
-        background: rgba(180, 147, 90, 0.05);
+        background: rgba(
+            var(--accent-rgb),
+            0.1
+        ); /* Si tienes la variable RGB */
+        transform: translateY(-2px);
     }
 
     /* --- RESPONSIVE --- */
 
     @media (max-width: 768px) {
-        .enfoque-wrapper {
-            padding: 5rem 1rem;
-        }
-
         .enfoque-card {
-            padding: 2.5rem 1.5rem;
+            /* En móvil quitamos bordes laterales si es necesario para ganar espacio */
+            border-left: none;
+            border-right: none;
+            width: 100vw;
+            margin-left: -1.5rem; /* Compensa el padding del wrapper */
         }
 
         .principles-grid {
-            grid-template-columns: 1fr; /* Una columna sola para que el texto no se aprete */
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
-        .text-lead {
-            text-align: left; /* En móvil pequeño, a veces el justify deja huecos feos */
-        }
-
-        .disciplines-section {
-            margin-top: 2rem;
-        }
-
-        .disciplines-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: space-between;
-        }
-
-        .team-intro {
-            text-align: center;
-        }
-    }
-
-    @media (min-width: 1200px) {
-        .enfoque-header {
-            text-align:;
+        .intro1 {
+            text-align: left; /* Opcional: a veces el centrado en párrafos largos de móvil cansa */
         }
     }
 </style>

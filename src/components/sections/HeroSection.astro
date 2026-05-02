@@ -70,7 +70,7 @@ import { heroData } from "../../data/hero.js";
 
     /* AJUSTE: Quitamos el padding-top fijo y usamos padding vertical 
        esto asegura que el contenido nunca toque los bordes */
-    padding-block: 8rem 5rem;
+    padding-block: 2rem;
   }
 
   /* BACKGROUND */
@@ -120,12 +120,12 @@ import { heroData } from "../../data/hero.js";
   .hero-overlay {
     position: absolute;
     inset: 0;
+    /* Degradado más inteligente: oscuro abajo y a la izquierda para legibilidad */
     background: linear-gradient(
-      75deg,
-      rgba(5, 10, 18, 0.7) 0%,
-      /* Casi negro en el texto */ rgba(5, 10, 18, 0.1) 20%,
-      /* Se aclara al centro */ rgba(5, 10, 18, 0.1) 100%
-        /* Deja ver el video a la derecha */
+      to bottom right,
+      rgba(5, 10, 18, 0.8) 0%,
+      rgba(5, 10, 18, 0.4) 50%,
+      rgba(5, 10, 18, 0.2) 100%
     );
   }
 
@@ -133,8 +133,7 @@ import { heroData } from "../../data/hero.js";
   .hero-container {
     position: relative;
     z-index: 2;
-    /* 1.5rem en móvil, crece hasta 100px en desktop */
-    padding-inline: clamp(1.5rem, 8vw, 100px);
+    padding-inline: clamp(1.5rem, 5vw, 4rem);
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -144,161 +143,151 @@ import { heroData } from "../../data/hero.js";
 
   /*evita que Bootstrap centre  raro */
   .hero-content {
+    max-width: 750px;
+    /* Evitamos el center forzado si queremos mantener estética elegante */
     text-align: left;
-    background-color: rgba(10, 26, 47, 0.01);
-    max-width: 700px;
   }
 
   /* TITULO */
   .hero-title {
-    /* El global no sabe qué tamaño quieres en el Hero, así que lo pones aquí */
-    font-size: clamp(2.5rem, 5vw, 5rem);
-    margin-bottom: 1.5rem;
+    font-size: clamp(
+      2.2rem,
+      6vw,
+      4.5rem
+    ); /* Un pelín más chico el mínimo para iPhone SE */
+    line-height: 1.1;
+    text-wrap: balance; /* Crucial para evitar cortes feos */
   }
 
   .hero-description {
-    /* El global no sabe cuánto debe medir de ancho tu párrafo en el Hero */
-    max-width: 560px;
-    margin-top: 1rem;
-
-    /* Si quieres que en el Hero el texto sea un pelín más grande que el .text-lead normal */
-    font-size: 1.2rem;
+    max-width: 580px;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: rgba(255, 255, 255, 0.9);
+    text-wrap: pretty;
   }
 
   /* ACTIONS */
   .hero-actions {
     display: flex;
     flex-direction: row;
-    align-items: center; /* Crucial: Alinea los botones por su centro */
-    gap: 1.2rem;
-    margin-top: 2.5rem;
-    flex-wrap: nowrap; /* Evita que se amontonen uno abajo del otro */
-    max-width: 100%;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: clamp(1.5rem, 3vw, 2.5rem);
+    flex-wrap: nowrap; /* Forzamos que no bajen en PC */
   }
 
-  /* BOTÓN PRINCIPAL */
+  /* BOTÓN PRIMARIO (El de color) */
   .btn-boutique {
-    display: inline-block;
-    background: var(--primary);
-    color: var(--accent);
-    padding: 15px 32px;
-    border: 0.3px solid var(--accent); /* Para que mida igual que el otro */
-    font-weight: 700;
-
-    /* Ajuste automático al texto */
-    width: fit-content;
-    white-space: nowrap; /* El texto NUNCA saltará de línea */
-
-    /* Estructura */
+    background-color: var(
+      --accent
+    ); /* Asegúrate que esta variable tenga el color */
+    color: var(--primary); /* Texto oscuro sobre el color */
+    padding: 0 2.5rem;
+    min-height: 54px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    /* Tamaño consistente */
-    min-height: 52px; /* Altura fija para que siempre estén alineados */
-    padding-inline: 32px; /* Padding solo a los lados para que crezca horizontalmente */
-
-    /* Tipografía */
-    font-size: 0.85rem; /* Puedes variarlo y el botón no se deformará */
+    border: 1px solid var(--accent);
+    font-weight: 700;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     cursor: pointer;
+    white-space: nowrap;
   }
 
   .btn-boutique:hover {
-    transform: translateY(-3px);
-    background: white;
+    background-color: white;
     border-color: white;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    color: var(--primary);
+    transform: translateY(-3px);
   }
 
+  /* BOTÓN SECUNDARIO (El transparente/border) */
   .btn-text-link {
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Borde blanco sutil */
-    font-weight: 700;
-    backdrop-filter: blur(10px);
-    cursor: pointer;
-
-    /* Ajuste automático al texto */
-    width: fit-content;
-    white-space: nowrap; /* El texto NUNCA saltará de línea */
-
-    /* Estructura */
+    color: white;
+    padding: 0 2.5rem;
+    min-height: 54px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    /* Tamaño consistente */
-    min-height: 52px; /* Altura fija para que siempre estén alineados */
-    padding-inline: 32px; /* Padding solo a los lados para que crezca horizontalmente */
-
-    /* Tipografía */
-    font-size: 0.85rem; /* Puedes variarlo y el botón no se deformará */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    font-weight: 600;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    color: white;
+    backdrop-filter: blur(5px);
+    transition: all 0.4s ease;
+    cursor: pointer;
+    white-space: nowrap;
   }
 
   .btn-text-link:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: white;
-    background-clip: border-box;
+    color: white;
   }
 
   /* MOBILE */
   @media (max-width: 768px) {
+    .hero-wrapper {
+      /* Evita que el hero se corte en pantallas pequeñas */
+      padding-block: 6rem 4rem;
+      height: auto;
+      min-height: 100dvh;
+    }
+
+    .hero-content {
+      text-align: center; /* Centramos todo el bloque */
+      margin: 0 auto;
+    }
+
     .hero-actions {
-      flex-direction: column;
-      align-items: stretch;
+      justify-content: center; /* Centra los botones horizontalmente */
+      flex-direction: column; /* Apila en móviles chicos */
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+    }
+
+    .btn-boutique,
+    .btn-text-link {
+      width: 100%; /* Ocupan el ancho disponible */
+      max-width: 320px; /* Pero no son infinitos */
+      padding: 0 1rem; /* Menos padding interno para que entre el texto */
+    }
+    .hero-overlay {
+      /* En móvil oscurecemos más para compensar pantallas con mucho brillo */
+      background: rgba(5, 10, 18, 0.6);
+    }
+
+    .hero-title {
+      /* Achicamos un poco más para que no empuje todo hacia abajo */
+      font-size: clamp(2rem, 8vw, 2.5rem);
+      text-align: center;
+    }
+
+    .hero-description {
+      text-align: center;
+      margin-inline: auto;
     }
 
     .hero-container {
       padding: 1.5rem;
     }
-
-    .hero-overlay {
-      background: rgba(10, 26, 47, 0.1);
-    }
-    .hero-title,
-    .hero-description {
-      text-align: center;
-    }
-
-    .hero-content {
-      padding: 1.5rem;
-    }
-    .hero-actions {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .btn-boutique {
-      width: 80%;
-      align-items: center;
-    }
-
-    .btn-text-link {
-      width: 80%;
-      font-size: 0.75rem;
-    }
   }
-
-  @media (max-width: 340px) {
+  /* Para pantallas extremadamente pequeñas (iPhone SE viejo) */
+  @media (max-width: 360px) {
     .btn-boutique,
     .btn-text-link {
-      width: 80%;
-      justify-content: center;
-      font-size: 0.6rem;
+      font-size: 0.75rem;
+      min-height: 48px;
     }
+
     .hero-title {
-      font-size: 2rem;
-    }
-    .hero-description {
-      font-size: 1rem;
+      font-size: 1.8rem;
     }
   }
 </style>
