@@ -117,10 +117,9 @@ p {
 /* Clase para descripciones destacadas */
 .text-lead {
   /* No necesitas repetir font-family ni font-weight si ya están en el p */
-  font-size: 1.15rem;
-  line-height: 1.7;
   color: rgba(255, 255, 255, 0.95);
-  text-wrap: pretty;
+  font-size: clamp(1rem, 1.1vw + 0.8rem, 1.25rem);
+  line-height: 1.6;
 }
 
 /* 5. Utilidades y Helpers */

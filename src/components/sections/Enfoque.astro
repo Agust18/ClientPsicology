@@ -61,91 +61,84 @@ import { EnfoqueData } from "../../data/Enfoque";
 </section>
 
 <style>
-    .intro1 {
-        font-weight: bold;
-        font-size: clamp(1.5rem, 2vw, 2.5rem);
-        color: var(--accent);
-    }
     .enfoque-wrapper {
-        background-color: #03070d; /* Fondo unificado con Hero y Footer */
-        padding: 10rem 1.5rem;
+        background-color: #03070d;
+        padding: 8rem 1.5rem;
         color: white;
-        position: relative;
         overflow: hidden;
-        /* box-shadow: 0 20px 50px -20px rgba(180, 147, 90, 0.3); */
     }
 
     .enfoque-header {
-        margin-bottom: 4.5rem;
+        margin-bottom: 4rem;
         text-align: center;
     }
 
-    /* La Card con efecto Glass sutil */
+    .enfoque-title {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        line-height: 1.1;
+        margin-bottom: 1rem;
+    }
+
+    .intro1 {
+        color: var(--accent);
+        font-weight: 600;
+        font-size: clamp(1.2rem, 1.5vw + 0.9rem, 1.5rem);
+        text-align: center; /* La intro queda mejor centrada */
+    }
+
+    /* --- LA CARD (GLASS) --- */
     .enfoque-card {
         background: rgba(255, 255, 255, 0.02);
         border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 2px; /* Menos redondeado = más serio/boutique */
         padding: 4rem;
-        position: relative;
+        max-width: 1000px;
+        margin: 0 auto;
     }
 
+    /* --- GRID DE PRINCIPIOS --- */
     .principles-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        gap: 3rem;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
         margin: 4rem 0;
     }
 
     .principle-item {
         display: flex;
-        gap: 1.5rem;
-        align-items: flex-start;
+        gap: 1.2rem;
     }
-
-    .principle-item p {
-        text-wrap: pretty; /* Crucial para evitar cortes feos */
-        line-height: 1.6;
-    }
-
     .principle-dot {
-        width: 6px;
-        height: 6px;
+        width: 8px;
+        height: 8px;
         background-color: var(--accent);
         border-radius: 50%;
-        margin-top: 0.7rem;
+        margin-top: 0.6rem;
         flex-shrink: 0;
-        box-shadow: 0 0 12px rgba(180, 147, 90, 0.4);
+        box-shadow: 0 0 10px var(--accent);
     }
 
-    .intro-container p {
-        text-wrap: pretty; /* Evita palabras huérfanas al final */
-        line-height: 1.7; /* Un poco más de aire para tipografía elegante */
-        margin-bottom: 1.5rem;
-    }
-
+    /* --- DISCIPLINAS --- */
     .disciplines-section {
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        padding-top: 4rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 3rem;
+        margin-top: 2rem;
     }
 
     .disciplines-container {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.75rem;
-        margin-top: 2.2rem;
-        margin-bottom: 2rem;
+        gap: 0.8rem;
+        margin-top: 2rem;
     }
 
     .discipline-badge {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.75rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.7rem;
         background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         color: #e2e8f0;
-        border-radius: 1px;
         text-transform: uppercase;
-        transition: all 1.5s ease;
-        letter-spacing: 0.15em;
+        letter-spacing: 0.1em;
     }
 
     .discipline-badge:hover {
@@ -154,91 +147,45 @@ import { EnfoqueData } from "../../data/Enfoque";
         background: rgba(180, 147, 90, 0.05);
     }
 
-    .disciplines-section {
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        padding-top: 4rem;
-    }
+    /* --- RESPONSIVE --- */
 
-    .disciplines-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        margin-top: 2.2rem;
+    @media (max-width: 768px) {
+        .enfoque-wrapper {
+            padding: 5rem 1rem;
+        }
+
+        .enfoque-card {
+            padding: 2.5rem 1.5rem;
+        }
+
+        .principles-grid {
+            grid-template-columns: 1fr; /* Una columna sola para que el texto no se aprete */
+            gap: 1.5rem;
+        }
+
+        .text-lead {
+            text-align: left; /* En móvil pequeño, a veces el justify deja huecos feos */
+        }
+
+        .disciplines-section {
+            margin-top: 2rem;
+        }
+
+        .disciplines-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: space-between;
+        }
+
+        .team-intro {
+            text-align: center;
+        }
     }
 
     @media (min-width: 1200px) {
         .enfoque-header {
-            text-align: start;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .enfoque-title {
-            /**esto lo que hace es que el titulo se adapte al tamaño de la pantalla 
-        2.5rem es el tamaño minimo 
-        5vw es el tamaño promedio
-        5rem es el tamaño maximo
-        */
-
-            font-size: clamp(2.5rem, 4vw, 3.5rem);
-            max-width: 800px;
-        }
-
-        .enfoque-wrapper {
-            padding-bottom: 10rem;
-        }
-
-        .disciplines-container {
-        }
-    }
-
-    @media (max-width: 768px) {
-        .principles-grid {
-            /* En móvil bajamos el mínimo para que quepa en pantallas chicas */
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-            margin-bottom: 2rem;
-        }
-
-        .enfoque-card {
-            padding: 2rem;
-        }
-
-        .intro1 {
-            font-weight: bold;
-            font-size: clamp(1.5rem, 2vw, 2.5rem);
-            color: var(--accent);
-        }
-
-        .enfoque-title {
-            font-size: clamp(2rem, 8vw, 2.5rem);
-            text-align: center;
-        }
-
-        .disciplines-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding-top: 2.5rem;
-        }
-
-        .disciplines-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .enfoque-wrapper {
-            padding: 7rem 1.5rem;
-        }
-
-        .intro-container {
-            max-width: 60ch;
+            text-align:;
         }
     }
 </style>

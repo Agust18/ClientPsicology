@@ -1,0 +1,186 @@
+---
+import { BeneficiosData } from "../../data/Beneficios";
+---
+
+<section class="beneficios-wrapper">
+    <div class="container">
+        <div class="beneficios-header fade-in-up">
+            <h2 class="title-display title-beneficios">
+                {BeneficiosData.title}
+            </h2>
+            <span class="font-display italic text-accent"
+                >Nuestros 4 pilares</span
+            >
+            <hr />
+        </div>
+
+        <div class="beneficios-grid">
+            {
+                BeneficiosData.items.map((item) => (
+                    <div class="beneficio-card fade-in-up">
+                        <div class="beneficio-content">
+                            <span class="beneficio-number">0{item.id}</span>
+                            <h3 class="beneficio-title">{item.title}</h3>
+                            <p class="beneficio-description">
+                                {item.description}
+                            </p>
+                        </div>
+                        <div class="card-border-gradient" />
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .beneficios-wrapper {
+        background-color: #03070d;
+        padding: clamp(4rem, 8vw, 8rem) 1.5rem;
+        position: relative;
+        overflow: hidden;
+    }
+    span {
+        font-size: clamp(1.5rem, 2vw, 1.8rem);
+    }
+    hr {
+        max-width: 40%;
+        margin: auto;
+        background-color: var(--accent);
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .beneficios-header {
+        margin-bottom: clamp(3rem, 5vw, 5rem);
+        text-align: center;
+    }
+
+    .title-beneficios {
+        font-size: clamp(2rem, 4vw, 3rem);
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.2;
+    }
+
+    /* --- GRID DINÁMICO --- */
+    .beneficios-grid {
+        display: grid;
+        /* El min(100%, 350px) previene el desborde en pantallas muy chicas */
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+        gap: 2rem;
+    }
+
+    /* --- CARDS --- */
+    .beneficio-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: clamp(2rem, 3vw, 3rem);
+        position: relative;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .beneficio-card:hover {
+        transform: translateY(-8px);
+        background: rgba(255, 255, 255, 0.04);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .beneficio-number {
+        display: block;
+        color: var(--accent);
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        letter-spacing: 0.3em;
+        opacity: 0.9;
+    }
+
+    .beneficio-title {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+        color: #fff;
+    }
+
+    .beneficio-description {
+        color: rgba(226, 232, 240, 0.7);
+        line-height: 1.8;
+        font-size: 1rem;
+        text-wrap: pretty;
+    }
+
+    /* --- DECORACIÓN --- */
+    .card-border-gradient {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            var(--accent),
+            transparent
+        );
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+    .beneficio-card:hover .card-border-gradient {
+        opacity: 1;
+    }
+
+    @media (min-width: 1200px) {
+        .beneficios-grid {
+            grid-template-columns: repeat(2, minmax(250px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .beneficios-wrapper {
+            padding: clamp(3rem, 3vw, 3rem) 1.5rem;
+        }
+
+        .beneficio-card {
+            padding: clamp(2rem, 3vw, 3rem);
+        }
+    }
+
+    /* --- AJUSTES MÓVIL --- */
+    @media (max-width: 768px) {
+        .beneficios-grid {
+            gap: 1.5rem;
+        }
+
+        .title-beneficios {
+            max-width: 100%; /* Permitir más ancho en móvil */
+        }
+
+        .beneficio-card {
+            text-align: center; /* Opcional: centrar contenido en móvil */
+        }
+    }
+
+    @media (max-width: 320px) {
+        .title-beneficios {
+            font-size: 1.8rem;
+        }
+        .font-display {
+            font-size: 1.5rem;
+        }
+        hr {
+            max-width: 70%;
+        }
+        .beneficio-card {
+            padding: clamp(1rem, 2vw, 2rem);
+        }
+        .beneficio-title {
+            font-size: 1.2rem;
+        }
+        .beneficio-description {
+            font-size: 0.9rem;
+        }
+    }
+</style>
