@@ -1,0 +1,396 @@
+---
+// Importamos la data desde el archivo externo para mantener limpio el componente
+import { psicoterapia, directivos } from "../../data/Equipo.js";
+---
+
+<section id="equipo" class="team-section relative overflow-hidden">
+    <!-- Resplandores de fondo para dar profundidad -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <div class="container relative z-10">
+        <!-- Header con alineación refinada -->
+        <header class="team-header text-center gsap-fade-up">
+            <span class="eyebrow">Excelencia Profesional</span>
+            <h2 class="title">Dirección Clínica <br /> e Interdisciplinaria</h2>
+            <p class="coordination-note mx-auto">
+                Coordinación clínica conjunta, articulando disciplinas para
+                asegurar la coherencia integral en cada abordaje.
+            </p>
+        </header>
+
+        <!-- Grilla de Directores con efecto Glassmorphism -->
+        <div class="directors-grid">
+            {
+                directivos.map((doc) => (
+                    <div class="director-card glass-panel hover-lift gsap-director">
+                        <div class="card-inner">
+                            <div class="role-badge">{doc.rol}</div>
+                            <h3 class="doc-name">{doc.nombre}</h3>
+                            <span class="doc-cargo">{doc.cargo}</span>
+
+                            <div class="doc-bio">
+                                <p>{doc.descripcion}</p>
+                                <div class="special-focus">
+                                    <span class="focus-label">
+                                        Línea de Enfoque
+                                    </span>
+                                    <p>{doc.enfoque}</p>
+                                </div>
+                            </div>
+
+                            <div class="doc-footer">
+                                <span class="hospital-tag">
+                                    <svg
+                                        width="16"
+                                        height="16"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                                    </svg>
+                                    {doc.institucion}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+
+        <!-- Sección Psicoterapia con borde destacado (Gradient Border) -->
+        <div
+            class="psicotherapy-section glass-panel highlight-border gsap-fade-up"
+        >
+            <div class="psico-content">
+                <div class="psico-header">
+                    <span class="role-badge">{psicoterapia.rol}</span>
+                    <h3 class="doc-name-large mt-4">{psicoterapia.nombre}</h3>
+                    <span class="doc-cargo-large text-accent"
+                        >{psicoterapia.cargo}</span
+                    >
+                </div>
+
+                <div class="psico-body">
+                    <div class="psico-text">
+                        <p>{psicoterapia.descripcion}</p>
+                        <div class="psico-extra mt-6">
+                            <span class="icon-text">
+                                <svg
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    ><path
+                                        d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
+                                    ></path><circle cx="9" cy="7" r="4"
+                                    ></circle><path
+                                        d="M23 21v-2a4 4 0 0 0-3-3.87"
+                                    ></path><path d="M16 3.13a4 4 0 0 1 0 7.75"
+                                    ></path></svg
+                                >
+                                Especialista en organizaciones y empresas familiares.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="psico-approach glass-panel-inner">
+                        <h4>
+                            <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                class="text-accent"
+                                ><path
+                                    d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
+                                ></path></svg
+                            >
+                            Modelo de Intervención
+                        </h4>
+                        <p>{psicoterapia.enfoque}</p>
+                        <blockquote class="mt-6 italic text-accent">
+                            "El trabajo se construye desde intervenciones con
+                            sentido clínico, articuladas con el resto del
+                            equipo."
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    :root {
+        --bg-deep: #03070d;
+        --accent-gold: #c5a47e;
+        --accent-gold-low: rgba(197, 164, 126, 0.15);
+        --text-pure: #ffffff;
+        --text-soft: #a0aec0;
+        --glass: rgba(255, 255, 255, 0.02);
+        --glass-border: rgba(255, 255, 255, 0.08);
+    }
+
+    .team-section {
+        background-color: var(--bg-deep);
+        color: var(--text-pure);
+        padding: clamp(6rem, 15vw, 10rem) 5%;
+        font-family: "Inter", sans-serif;
+    }
+
+    /* Background Decoration */
+    .bg-glow {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(140px);
+        pointer-events: none;
+        z-index: 1;
+    }
+    .bg-glow-1 {
+        top: 10%;
+        right: -5%;
+        width: 35vw;
+        height: 35vw;
+        background: radial-gradient(
+            circle,
+            var(--accent-gold-low) 0%,
+            transparent 70%
+        );
+    }
+    .bg-glow-2 {
+        bottom: -5%;
+        left: -5%;
+        width: 40vw;
+        height: 40vw;
+        background: radial-gradient(
+            circle,
+            var(--accent-gold-low) 0%,
+            transparent 70%
+        );
+    }
+
+    .container {
+        max-width: 1300px;
+        margin: 0 auto;
+    }
+
+    /* Glass Panels */
+    .glass-panel {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: 32px;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: clamp(2rem, 5vw, 4rem);
+    }
+
+    .glass-panel-inner {
+        background: rgba(0, 0, 0, 0.25);
+        border: 1px solid var(--glass-border);
+        border-radius: 20px;
+        padding: 2.5rem;
+    }
+
+    /* Header Design */
+    .team-header {
+        margin-bottom: 6rem;
+    }
+    .eyebrow {
+        color: var(--accent-gold);
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        font-size: 0.75rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        display: block;
+    }
+    .title {
+        font-family: "Lora", serif;
+        font-size: clamp(3rem, 6vw, 4.5rem);
+        line-height: 1.05;
+        font-weight: 400;
+        margin-bottom: 2rem;
+    }
+    .coordination-note {
+        font-size: 1.2rem;
+        color: var(--text-soft);
+        max-width: 650px;
+        font-weight: 300;
+        line-height: 1.6;
+    }
+
+    /* Directors Cards */
+    .directors-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+        gap: 3rem;
+        margin-bottom: 5rem;
+    }
+
+    .director-card {
+        transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+    }
+    .hover-lift:hover {
+        transform: translateY(-12px);
+        border-color: var(--accent-gold);
+        background: rgba(255, 255, 255, 0.04);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .role-badge {
+        display: inline-block;
+        background: var(--accent-gold-low);
+        color: var(--accent-gold);
+        padding: 0.5rem 1.2rem;
+        border-radius: 8px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+    }
+
+    .doc-name {
+        font-family: "Lora", serif;
+        font-size: 2.4rem;
+        margin-bottom: 0.5rem;
+    }
+    .doc-cargo {
+        color: var(--accent-gold);
+        font-size: 1rem;
+        display: block;
+        margin-bottom: 2.5rem;
+        letter-spacing: 1px;
+    }
+
+    .doc-bio p {
+        color: var(--text-soft);
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+        font-size: 1.05rem;
+    }
+
+    .special-focus {
+        border-top: 1px solid var(--glass-border);
+        padding-top: 2rem;
+        margin-top: 1rem;
+    }
+    .focus-label {
+        color: var(--text-pure);
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    .hospital-tag {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-size: 0.85rem;
+        color: var(--accent-gold);
+        opacity: 0.7;
+    }
+    .hospital-tag svg {
+        color: var(--accent-gold);
+    }
+
+    /* Psicoterapia Highlight */
+    .highlight-border {
+        position: relative;
+        overflow: hidden;
+    }
+    .highlight-border::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            var(--accent-gold),
+            transparent
+        );
+    }
+
+    .psico-body {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 4rem;
+        margin-top: 3rem;
+    }
+    .doc-name-large {
+        font-family: "Lora", serif;
+        font-size: 2.8rem;
+        margin-bottom: 0.5rem;
+    }
+    .doc-cargo-large {
+        color: var(--accent-gold);
+        font-size: 1.2rem;
+    }
+
+    .icon-text {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: var(--accent-gold);
+        font-weight: 500;
+    }
+
+    @media (max-width: 1024px) {
+        .psico-body {
+            grid-template-columns: 1fr;
+        }
+        .directors-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    gsap.registerPlugin(ScrollTrigger);
+
+    const setupAnimations = () => {
+        // Fade up para elementos generales
+        gsap.utils.toArray(".gsap-fade-up").forEach((el: any) => {
+            gsap.from(el, {
+                y: 60,
+                opacity: 0,
+                duration: 1.2,
+                ease: "power4.out",
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 90%",
+                },
+            });
+        });
+
+        // Stagger para tarjetas de directores
+        gsap.from(".gsap-director", {
+            y: 80,
+            opacity: 0,
+            duration: 1.5,
+            stagger: 0.3,
+            ease: "expo.out",
+            scrollTrigger: {
+                trigger: ".directors-grid",
+                start: "top 80%",
+            },
+        });
+    };
+
+    document.addEventListener("astro:page-load", setupAnimations);
+</script>

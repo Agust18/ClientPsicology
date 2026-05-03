@@ -1,0 +1,173 @@
+---
+const testimonios = [
+    {
+        quote: "Nos ayudaron a ordenar una situación médica muy compleja y tomar decisiones con claridad.",
+        author: "Anonimo",
+        tag: "Claridad",
+    },
+    {
+        quote: "Por primera vez sentimos que alguien veía el cuadro completo.",
+        author: "Anonimo",
+        tag: "Integral",
+    },
+    {
+        quote: "El abordaje fue integral, no sólo médico sino también humano.",
+        author: "Anonimo",
+        tag: "Humano",
+    },
+];
+---
+
+<section class="testimonial-section-fluid">
+    <div class="carousel-viewport" id="viewport">
+        <div class="carousel-track" id="track">
+            {
+                testimonios.map((t) => (
+                    <div class="test-card">
+                        <span class="test-tag">{t.tag}</span>
+                        <p class="test-text">“{t.quote}”</p>
+                        <div class="test-footer">
+                            <span class="test-line" />
+                            <span class="test-name">{t.author}</span>
+                        </div>
+                    </div>
+                ))
+            }
+            <!-- Duplicamos las cartas para el efecto infinito sin saltos -->
+            {
+                testimonios.map((t) => (
+                    <div class="test-card" aria-hidden="true">
+                        <span class="test-tag">{t.tag}</span>
+                        <p class="test-text">“{t.quote}”</p>
+                        <div class="test-footer">
+                            <span class="test-line" />
+                            <span class="test-name">{t.author}</span>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .testimonial-section-fluid {
+        background: #03070d;
+        padding: 6rem 0;
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        overflow: hidden;
+        cursor: grab;
+    }
+
+    .testimonial-section-fluid:active {
+        cursor: grabbing;
+    }
+
+    .carousel-track {
+        display: flex;
+        gap: 2.5rem;
+        width: max-content; /* Vital para el scroll infinito */
+        padding-left: 2.5rem;
+        will-change: transform;
+    }
+
+    .test-card {
+        width: clamp(320px, 35vw, 480px);
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: clamp(2rem, 5vw, 3.5rem);
+        backdrop-filter: blur(12px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .test-tag {
+        color: var(--accent);
+        font-size: 0.7rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+    }
+
+    .test-text {
+        font-family: "Lora", serif;
+        font-size: 1.25rem;
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.7;
+        font-style: italic;
+    }
+
+    .test-footer {
+        margin-top: 2.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .test-line {
+        width: 35px;
+        height: 1px;
+        background: var(--accent);
+        opacity: 0.6;
+    }
+    .test-name {
+        font-size: 0.85rem;
+        color: #fff;
+        opacity: 0.7;
+        letter-spacing: 0.05em;
+    }
+</style>
+
+<script>
+    import { gsap } from "gsap";
+    import { Draggable } from "gsap/Draggable";
+
+    gsap.registerPlugin(Draggable);
+
+    const track = document.getElementById("track");
+    const viewport = document.getElementById("viewport");
+
+    if (track && viewport) {
+        // 1. Animación de Loop Infinito
+        const loop = gsap.to(track, {
+            xPercent: -50, // Se mueve hasta la mitad (donde empiezan las copias)
+            ease: "none",
+            duration: 30, // Velocidad del autoplay
+            repeat: -1,
+        });
+
+        // 2. Hacer que TODO el contenedor sea arrastrable
+        Draggable.create(track, {
+            type: "x",
+            trigger: ".testimonial-section-fluid", // Área de interacción total
+            inertia: true,
+            onPress: () => loop.pause(), // Se detiene el autoplay al tocar
+            onRelease: () => loop.play(), // Se reanuda al soltar
+            onDrag: function () {
+                // Lógica para que el drag también sea infinito
+                const totalWidth = track.offsetWidth / 2;
+                if (this.x > 0) {
+                    gsap.set(track, { x: -totalWidth });
+                    this.update();
+                } else if (this.x < -totalWidth) {
+                    gsap.set(track, { x: 0 });
+                    this.update();
+                }
+            },
+        });
+
+        // 3. Pausar al pasar el mouse (opcional para lectura cómoda)
+        viewport.addEventListener("mouseenter", () =>
+            gsap.to(loop, { timeScale: 0, duration: 0.5 }),
+        );
+        viewport.addEventListener("mouseleave", () =>
+            gsap.to(loop, { timeScale: 1, duration: 0.5 }),
+        );
+    }
+</script>

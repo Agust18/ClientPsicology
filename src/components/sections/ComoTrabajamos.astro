@@ -1,0 +1,347 @@
+---
+import { ComoTrabajamosData } from "../../data/ComoTrabajamos.js";
+---
+
+<section class="work-agency-section" id="work-trigger">
+    <div class="agency-wrapper">
+        <!-- LADO IZQUIERDO: Header Fijo y centrado verticalmente -->
+        <div class="work-left">
+            <div class="header-content gsap-fade-header">
+                <span class="eyebrow">Metodología</span>
+                <h2 class="section-title">Cómo trabajamos</h2>
+                <div class="modalidad-badge">
+                    <div class="div-span">
+                        <span class="italic">Atención presencial y online</span>
+                    </div>
+                    <a href="" class="btn-text">Agenda tu consulta</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- LADO DERECHO: El contenedor con Scroll Interno real -->
+        <div class="work-right" id="internal-scroll-container">
+            <div class="cards-container">
+                {
+                    ComoTrabajamosData.map((item) => (
+                        <div class="agency-card gsap-card-internal">
+                            <div class="card-number">{item.paso}</div>
+                            <div class="card-content">
+                                <div class="">
+                                    <span class="italic item-detalle">
+                                        {item.detalle}
+                                    </span>
+                                </div>
+
+                                <h3 class="card-title text-accent">
+                                    {item.titulo}
+                                </h3>
+                                <p class="card-text">{item.descripcion}</p>
+                            </div>
+                        </div>
+                    ))
+                }
+                <!-- Espacio extra al final para que la última card respire -->
+                <div class="scroll-spacer"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .work-agency-section {
+        background-color: #03070d;
+        color: white;
+        /* Padding reducido porque el contenedor interno definirá el espacio */
+        padding: clamp(2rem, 5vw, 4rem) 0;
+        position: relative;
+    }
+
+    .agency-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 5%;
+        gap: 4rem;
+
+        /* --- CLAVE PARA DESKTOP --- */
+        height: 80vh; /* Forzamos la altura de la sección al 80% de la pantalla */
+        min-height: 600px; /* Altura mínima de seguridad */
+        max-height: 850px; /* Altura máxima para pantallas muy grandes */
+        align-items: stretch; /* Estira ambos lados para que midan lo mismo */
+    }
+
+    .work-left {
+        flex: 0 0 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Centra el título verticalmente */
+    }
+
+    .eyebrow {
+        color: #c5a47e;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        font-size: 0.8rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .section-title {
+        font-family: "Lora", serif;
+        font-size: clamp(2.4rem, 5vw, 4.2rem);
+        line-height: 1.1;
+        margin-bottom: 2rem;
+        font-weight: 400;
+    }
+
+    /* --- CLAVE PARA EL SCROLL INTERNO --- */
+    .work-right {
+        flex: 1; /* Ocupa el resto del espacio */
+        overflow-y: auto; /* Habilita el scroll vertical */
+        padding-right: 2rem; /* Espacio para el scrollbar */
+        padding-left: 1rem;
+
+        /* Estilos premium para el scrollbar (Chrome/Safari) */
+        scrollbar-width: thin;
+        scrollbar-color: rgba(197, 164, 126, 0.4) rgba(255, 255, 255, 0.02);
+    }
+
+    .work-right::-webkit-scrollbar {
+        width: 6px;
+    }
+    .work-right::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 10px;
+    }
+    .work-right::-webkit-scrollbar-thumb {
+        background: rgba(197, 164, 126, 0.3);
+        border-radius: 10px;
+    }
+    .work-right::-webkit-scrollbar-thumb:hover {
+        background: rgba(197, 164, 126, 0.6);
+    }
+
+    .cards-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        padding: 2rem 0; /* Padding superior e inferior para las cards */
+    }
+
+    .card-title {
+        margin-bottom: 1rem;
+        text-wrap: balance;
+    }
+
+    .item-detalle {
+        line-height: 1.1;
+        font-weight: 400;
+        margin-bottom: 1rem;
+    }
+
+    .agency-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 24px;
+        padding: clamp(2rem, 5vw, 3.5rem);
+        position: relative;
+        overflow: hidden;
+        /* Hardware acceleration para GSAP */
+        transform: translateZ(0);
+    }
+
+    .card-number {
+        position: absolute;
+        top: -1rem;
+        right: 1.5rem;
+        font-size: 8rem;
+        font-weight: 800;
+        color: rgba(197, 164, 126, 0.05);
+        font-family: "Lora", serif;
+    }
+
+    .scroll-spacer {
+        height: 1rem;
+    } /* Espacio al final del scroll */
+
+    .header-content {
+        margin-bottom: 2rem;
+        background-color: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 24px;
+        padding: clamp(2rem, 5vw, 3.5rem);
+    }
+
+    .div-span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .div-span span {
+        margin-bottom: 1rem;
+        color: #c5a47e;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        text-wrap: balance;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .btn-text {
+        text-align: center;
+        padding: 0.5rem 1rem;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: max-content;
+        border: 1px solid rgba(197, 164, 126, 0.3);
+        background-color: rgba(197, 164, 126, 0.1);
+        border-radius: 5px;
+    }
+
+    .btn-text:hover {
+        background-color: rgba(197, 164, 126, 0.2);
+        border-color: rgba(197, 164, 126, 0.5);
+    }
+
+    /* --- RESPONSIVE TOTAL --- */
+    @media (max-width: 1024px) {
+        .agency-wrapper {
+            flex-direction: column;
+            height: auto; /* IMPORTANTE: Quitamos altura fija en móvil */
+            min-height: 0;
+            max-height: none;
+            gap: 1rem;
+        }
+
+        .work-left,
+        .work-right {
+            flex: none;
+            width: 100%;
+        }
+
+        .work-right {
+            overflow-y: visible; /* Scroll normal de la web en móvil */
+            padding-right: 0;
+        }
+
+        .section-title br {
+            display: none;
+        }
+
+        .eyebrow {
+            text-align: center;
+        }
+        .section-title {
+            text-align: center;
+            font-size: clamp(2.5rem, 5vw, 4.2rem);
+        }
+        .modalidad-badge {
+            text-align: center;
+            font-size: clamp(1rem, 5vw, 1.5rem);
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: clamp(2rem, 5vw, 3.5rem);
+        }
+
+        .btn-text {
+            text-align: center;
+            padding: 0.5rem 1rem;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: max-content;
+            border: 1px solid rgba(197, 164, 126, 0.3);
+            background-color: rgba(197, 164, 126, 0.1);
+            border-radius: 5px;
+        }
+
+        .div-span span {
+            font-size: clamp(1rem, 5vw, 1.2rem);
+            color: #c5a47e;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+        }
+
+        .btn-text:hover {
+            background-color: rgba(197, 164, 126, 0.3);
+        }
+    }
+</style>
+
+<script is:inline>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const init = () => {
+        const mm = gsap.matchMedia();
+
+        // Animación Header (cuando la sección entra en vista)
+        gsap.from(".gsap-fade-header", {
+            opacity: 0,
+            y: 30,
+            duration: 1,
+            scrollTrigger: {
+                trigger: "#work-trigger",
+                start: "top 80%",
+            },
+        });
+
+        // --- Lógica ESCRITORIO (Scroll Interno) ---
+        mm.add("(min-width: 1025px)", () => {
+            gsap.utils.toArray(".gsap-card-internal").forEach((card) => {
+                gsap.from(card, {
+                    opacity: 0,
+                    y: 60,
+                    duration: 0.8,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: card,
+                        // ESTA ES LA CLAVE: El scroller no es la ventana, es el div
+                        scroller: "#internal-scroll-container",
+                        start: "top 95%", // Aparece cuando está casi al final del div visible
+                        toggleActions: "play none none reverse",
+                        // Marcadores para debuggear (quitar luego)
+                        // markers: true,
+                    },
+                });
+            });
+        });
+
+        // --- Lógica MÓVIL (Scroll Global) ---
+        mm.add("(max-width: 1024px)", () => {
+            // Recalcular ScrollTrigger por seguridad
+            ScrollTrigger.refresh();
+
+            gsap.utils.toArray(".gsap-card-internal").forEach((card) => {
+                gsap.from(card, {
+                    opacity: 0,
+                    y: 40,
+                    duration: 0.8,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: card,
+                        // Scroller por defecto (window)
+                        start: "top 85%",
+                        toggleActions: "play none none reverse",
+                    },
+                });
+            });
+        });
+    };
+
+    // Asegurar compatibilidad con Astro View Transitions
+    document.addEventListener("astro:page-load", () => {
+        ScrollTrigger.refresh();
+        init();
+    });
+</script>

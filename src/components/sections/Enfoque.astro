@@ -2,202 +2,46 @@
 import { EnfoqueData } from "../../data/Enfoque";
 ---
 
-<section class="enfoque-wrapper">
+<section class="enfoque-split" id="enfoque-section">
     <div class="container">
-        <!-- Encabezado con jerarquía visual -->
-        <div class="enfoque-header">
-            <h2 class="title-display enfoque-title fade-in">
-                {EnfoqueData.title}
-            </h2>
-            <h3 class="text-accent enfoque-subtitle fade-in">
-                {EnfoqueData.highlight}
-            </h3>
-        </div>
-
-        <!-- Contenedor Principal (The Glass Box) -->
-        <div class="enfoque-card">
-            <!-- Introducción con tipografía Lora -->
-            <div class="intro-container">
-                {
-                    EnfoqueData.intro1.map((paragraph) => (
-                        <p class="text-lead intro1 fade-in">{paragraph}</p>
-                    ))
-                }
-                {
-                    EnfoqueData.intro.map((paragraph) => (
-                        <p class="text-lead fade-in">{paragraph}</p>
-                    ))
-                }
+        <div class="split-layout">
+            <!-- LADO IZQUIERDO: Fijo al scrollear (Desktop) -->
+            <div class="left-col">
+                <div class="sticky-info">
+                    <span class="tag gsap-fade"
+                        >{EnfoqueData.header.eyebrow}</span
+                    >
+                    <h2 class="title gsap-fade">{EnfoqueData.header.title}</h2>
+                    <div class="scroll-indicator gsap-fade">
+                        <div class="line"></div>
+                        <span class="italic text-accent">EXPLORAR</span>
+                    </div>
+                </div>
             </div>
 
-            <!-- Principios / Ejes -->
-            <div class="principles-grid">
-                {
-                    EnfoqueData.principles.map((item) => (
-                        <div class="principle-item fade-in">
-                            <div class="principle-dot" />
-                            <p class="text-lead">{item}</p>
-                        </div>
-                    ))
-                }
-            </div>
+            <!-- LADO DERECHO: Contenido que fluye -->
+            <div class="right-col">
+                <div class="content-card gsap-card">
+                    <span class="card-num italic">01</span>
+                    <h3>El Equipo</h3>
+                    <p class="text-lead">{EnfoqueData.contenido.principal}</p>
+                </div>
 
-            <!-- Sección Equipo e Interdisciplina -->
-            <div class="disciplines-section fade-in">
-                <p class="text-lead">
-                    {EnfoqueData.teamIntro}
-                </p>
+                <div class="content-card gsap-card">
+                    <span class="card-num italic">02</span>
+                    <h3>El Modelo</h3>
+                    <p class="text-lead">{EnfoqueData.contenido.modelo}</p>
+                </div>
 
-                <div class="disciplines-container">
-                    {
-                        EnfoqueData.disciplines.map((discipline) => (
-                            <span class="discipline-badge">{discipline}</span>
-                        ))
-                    }
+                <div class="content-card gsap-card">
+                    <span class="card-num italic">03</span>
+                    <h3>Metodología</h3>
+                    <p>{EnfoqueData.contenido.metodologia}</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-<style>
-    .enfoque-wrapper {
-        background-color: #03070d;
-        /* Padding fluido para que no quede tanto espacio muerto en móvil */
-        padding: clamp(4rem, 10vw, 8rem) 1.5rem;
-        color: white;
-        overflow: hidden;
-    }
-
-    .enfoque-header {
-        margin-bottom: clamp(3rem, 5vw, 5rem);
-        text-align: center;
-    }
-
-    .enfoque-title {
-        font-size: clamp(2.2rem, 5vw, 3.8rem);
-        line-height: 1.1;
-        margin-bottom: 1rem;
-        text-wrap: balance;
-    }
-
-    .enfoque-subtitle {
-        font-size: clamp(1rem, 2vw, 1.2rem);
-        text-transform: uppercase;
-        letter-spacing: 0.2em;
-        opacity: 0.8;
-    }
-
-    .intro1 {
-        color: var(--accent);
-        font-weight: 600;
-        font-size: clamp(1.2rem, 2vw, 1.6rem);
-        text-align: center;
-        margin-bottom: 2rem;
-        line-height: 1.4;
-    }
-
-    /* --- LA CARD (GLASS) --- */
-    .enfoque-card {
-        background: rgba(255, 255, 255, 0.02);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        /* Padding responsivo: mucho en PC, lo justo en móvil */
-        padding: clamp(2rem, 5vw, 5rem);
-        max-width: 1000px;
-        margin: 0 auto;
-        backdrop-filter: blur(10px);
-    }
-
-    .intro-container {
-        font-family: "Lora", serif; /* Si la tienes importada, aquí brilla */
-        font-size: 1.1rem;
-        line-height: 1.8;
-        color: rgba(255, 255, 255, 0.8);
-        margin-bottom: 1.5rem;
-        text-wrap: pretty;
-    }
-
-    /* --- GRID DE PRINCIPIOS --- */
-    .principles-grid {
-        display: grid;
-        /* Ajustado para que en tablet no queden columnas muy flacas */
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 3rem;
-        margin: 4rem 0;
-    }
-
-    .principle-item {
-        display: flex;
-        gap: 1.2rem;
-        align-items: flex-start;
-    }
-
-    .principle-dot {
-        width: 6px;
-        height: 6px;
-        background-color: var(--accent);
-        border-radius: 50%;
-        margin-top: 0.7rem;
-        flex-shrink: 0;
-        box-shadow: 0 0 12px var(--accent);
-    }
-
-    /* --- DISCIPLINAS --- */
-    .disciplines-section {
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        padding-top: 3rem;
-        margin-top: 2rem;
-    }
-
-    .disciplines-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        margin-top: 2rem;
-        justify-content: center; /* Centrado queda más elegante */
-    }
-
-    .discipline-badge {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.65rem;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: rgba(226, 232, 240, 0.8);
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        transition: all 0.3s ease;
-    }
-
-    .discipline-badge:hover {
-        border-color: var(--accent);
-        color: var(--accent);
-        background: rgba(
-            var(--accent-rgb),
-            0.1
-        ); /* Si tienes la variable RGB */
-        transform: translateY(-2px);
-    }
-
-    /* --- RESPONSIVE --- */
-
-    @media (max-width: 768px) {
-        .enfoque-card {
-            /* En móvil quitamos bordes laterales si es necesario para ganar espacio */
-            border-left: none;
-            border-right: none;
-            width: 100vw;
-            margin-left: -1.5rem; /* Compensa el padding del wrapper */
-        }
-
-        .principles-grid {
-            gap: 2rem;
-        }
-
-        .intro1 {
-            text-align: left; /* Opcional: a veces el centrado en párrafos largos de móvil cansa */
-        }
-    }
-</style>
 
 <script>
     import { gsap } from "gsap";
@@ -205,22 +49,136 @@ import { EnfoqueData } from "../../data/Enfoque";
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const animateEnfoque = () => {
-        // Animación de aparición escalonada para todos los elementos con .fade-in
-        gsap.from(".fade-in", {
-            scrollTrigger: {
-                trigger: ".enfoque-wrapper",
-                start: "top 80%",
-                toggleActions: "play none none none",
-            },
-            y: 30,
+    // Animación para las tarjetas de la derecha
+    gsap.utils.toArray(".gsap-card").forEach((card: any) => {
+        gsap.from(card, {
             opacity: 0,
+            x: 50,
             duration: 1,
-            stagger: 0.2,
-            ease: "power3.out",
+            scrollTrigger: {
+                trigger: card,
+                start: "top 85%",
+                toggleActions: "play none none reverse",
+            },
         });
-    };
+    });
 
-    animateEnfoque();
-    document.addEventListener("astro:after-swap", animateEnfoque);
+    // Animación del encabezado izquierdo
+    gsap.from(".gsap-fade", {
+        opacity: 0,
+        y: 30,
+        stagger: 0.2,
+        duration: 1,
+        scrollTrigger: {
+            trigger: "#enfoque-section",
+            start: "top 70%",
+        },
+    });
 </script>
+
+<style>
+    .enfoque-split {
+        background-color: #03070d;
+        color: #fff;
+        padding: clamp(4rem, 10vw, 8rem) 1.5rem;
+        min-height: 100vh;
+    }
+
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .split-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    @media (min-width: 1024px) {
+        .split-layout {
+            grid-template-columns: 1fr 1fr;
+            gap: 10%;
+        }
+
+        .sticky-info {
+            position: sticky;
+            top: 15vh;
+        }
+    }
+
+    /* Estilos Izquierda */
+    .tag {
+        color: #c5a47e;
+        font-size: 0.75rem;
+        letter-spacing: 0.3em;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        display: block;
+    }
+
+    .title {
+        font-family: "Lora", serif;
+        font-size: clamp(2.2rem, 4vw, 3.5rem);
+        line-height: 1.1;
+        font-weight: 400;
+    }
+
+    .scroll-indicator {
+        margin-top: 4rem;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+    }
+
+    .scroll-indicator .line {
+        width: 60px;
+        height: 1px;
+        background-color: rgba(197, 164, 126, 0.4);
+    }
+
+    /* Estilos Derecha */
+    .content-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: clamp(2rem, 5vw, 4rem);
+        margin-bottom: 2rem;
+        border-radius: 4px;
+        transition: border-color 0.4s ease;
+    }
+
+    .content-card:hover {
+        border-color: rgba(197, 164, 126, 0.3);
+    }
+
+    .card-num {
+        font-family: "Lora", serif;
+        color: #c5a47e;
+        font-size: 1.2rem;
+        display: block;
+        margin-bottom: 2rem;
+        opacity: 0.6;
+    }
+
+    .content-card h3 {
+        font-family: "Lora", serif;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        font-weight: 400;
+    }
+
+    .content-card p {
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.8;
+        font-size: 1.1rem;
+    }
+
+    @media (max-width: 1024px) {
+        .content-card {
+            padding: 2rem;
+        }
+    }
+</style>

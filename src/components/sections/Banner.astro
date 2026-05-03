@@ -1,0 +1,205 @@
+<section class="banner-minimal">
+    <!-- Texto en movimiento con tus variables -->
+    <div class="bg-text-container">
+        <div class="scroll-wrapper">
+            <span class="bg-text-scroll"
+                >EXPERIENCIA • TRAYECTORIA • EXCELENCIA •
+            </span>
+            <span class="bg-text-scroll" aria-hidden="true"
+                >EXPERIENCIA • TRAYECTORIA • EXCELENCIA •
+            </span>
+        </div>
+    </div>
+
+    <div class="scroll-indicator">
+        <div class="mouse-wheel"></div>
+    </div>
+
+    <div class="container banner-content-v2">
+        <div class="message-wrapper">
+            <span class="top-line"></span>
+            <h2 class="main-message">
+                Compromiso profesional con <br />
+                <span class="text-accent italic">20 años</span> de historia
+            </h2>
+            <span class="bottom-line"></span>
+        </div>
+    </div>
+</section>
+
+<style>
+    .banner-minimal {
+        height: clamp(300px, 45dvh, 500px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        /* Usamos tu color de fondo principal para que la transición sea invisible */
+        background-color: #03070d;
+        width: 100vw;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        background: linear-gradient(
+            to bottom,
+            #03070d,
+            #050a14
+        ); /* Un azul muy oscuro al final */
+    }
+
+    .bg-text-container {
+        position: absolute;
+        width: 100%;
+        overflow: hidden;
+        /* Bajamos la opacidad para que el "stroke" sea apenas un susurro */
+        opacity: 0.3;
+        pointer-events: none;
+        mask-image: linear-gradient(
+            to right,
+            transparent,
+            black 15%,
+            black 85%,
+            transparent
+        );
+    }
+
+    .scroll-wrapper {
+        display: flex;
+        white-space: nowrap;
+        animation: scrollText 45s linear infinite;
+    }
+
+    .bg-text-scroll {
+        font-size: 16vh;
+        font-weight: 900;
+        color: transparent;
+        /* El borde del texto usa tu color de acento pero muy suave */
+        -webkit-text-stroke: 1px var(--accent);
+        text-transform: uppercase;
+        padding-right: 3rem;
+        letter-spacing: 0.1em;
+    }
+
+    @keyframes scrollText {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    .message-wrapper {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 2;
+    }
+
+    .main-message {
+        font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+        text-align: center;
+        color: #ffffff;
+        line-height: 1.1;
+        text-wrap: balance;
+        font-weight: 500;
+    }
+
+    /* Clase para resaltar los 20 años con tu color accent */
+    .text-accent {
+        color: var(--accent);
+    }
+
+    .italic {
+        font-style: italic;
+        /* Si usas Lora o similar para el toque boutique */
+        font-family: serif;
+    }
+
+    /* Líneas de acento usando tu variable */
+    .top-line,
+    .bottom-line {
+        width: 35px;
+        height: 1px;
+        background-color: var(--accent);
+        margin: 1.2rem 0;
+        opacity: 0.7;
+    }
+
+    .banner-minimal::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%; /* No llega a los bordes para dar más elegancia */
+        height: 1px;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            var(--accent),
+            transparent
+        );
+        opacity: 0.4;
+    }
+
+    .scroll-indicator {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .mouse-wheel {
+        width: 1px;
+        height: 40px;
+        background: linear-gradient(to bottom, var(--accent), transparent);
+        animation: dropLine 2s ease-in-out infinite;
+    }
+
+    @keyframes dropLine {
+        0% {
+            transform: scaleY(0);
+            transform-origin: top;
+            opacity: 0;
+        }
+        50% {
+            transform: scaleY(1);
+            transform-origin: top;
+            opacity: 1;
+        }
+        100% {
+            transform: scaleY(0);
+            transform-origin: bottom;
+            opacity: 0;
+        }
+    }
+
+    /* --- AJUSTES PARA MÓVIL --- */
+    @media (max-width: 768px) {
+        .banner-minimal {
+            height: 35dvh;
+            /* En móvil eliminamos el efecto de ancho completo si causa scroll horizontal */
+            margin-inline: 0;
+            width: 100%;
+            left: 0;
+        }
+
+        .bg-text-scroll {
+            font-size: 10vh;
+            -webkit-text-stroke: 0.5px var(--accent);
+        }
+
+        .main-message {
+            font-size: 1.6rem;
+            padding-inline: 1rem;
+        }
+    }
+</style>

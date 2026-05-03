@@ -8,7 +8,7 @@ import Logo from "./Logo.astro";
     <a
       href="#inicio"
       class="nav-logo-link"
-      aria-label="Psicología Boutique – inicio"
+      aria-label="Atelier Medical – inicio"
     >
       <Logo />
     </a>
@@ -16,10 +16,16 @@ import Logo from "./Logo.astro";
     <!-- Desktop links -->
     <ul class="nav-links" role="list">
       <li><a href="#inicio" class="nav-link">Inicio</a></li>
-      <li><a href="#sobre-nosotros" class="nav-link">Nosotros</a></li>
-      <li><a href="#areas-intervencion" class="nav-link">Servicios</a></li>
+      <li><a href="#dispositivo" class="nav-link">Dispositivo</a></li>
+      <!-- Antes Servicios -->
+      <li><a href="#equipo" class="nav-link">Equipo</a></li>
+      <!-- Antes Nosotros -->
+      <li><a href="#internacional" class="nav-link">Internacional</a></li>
+      <!-- Nuevo link clave -->
     </ul>
-    <a href="#contacto" class="nav-cta-desktop">Solicitar Consulta</a>
+
+    <!-- CTA con el nuevo lenguaje -->
+    <a href="#contacto" class="nav-cta-desktop">Solicitar Evaluación</a>
 
     <!-- Hamburger button -->
     <button
@@ -71,20 +77,20 @@ import Logo from "./Logo.astro";
     </svg>
   </button>
 
-  <!-- Logo inside drawer -->
   <div class="drawer-logo-container">
     <Logo />
   </div>
 
-  <!-- Nav links -->
+  <!-- Mobile links actualizados -->
   <ul class="drawer-links" role="list">
     <li><a href="#inicio" class="drawer-link">Inicio</a></li>
-    <li><a href="#sobre-nosotros" class="drawer-link">Nosotros</a></li>
-    <li><a href="#areas-intervencion" class="drawer-link">Servicios</a></li>
+    <li><a href="#dispositivo" class="drawer-link">Dispositivo</a></li>
+    <li><a href="#equipo" class="drawer-link">Equipo</a></li>
+    <li><a href="#internacional" class="drawer-link">Área Internacional</a></li>
+    <li><a href="#contacto" class="drawer-link">Contacto</a></li>
   </ul>
-  <a href="#contacto" class="drawer-cta-mobile">Solicitar Consulta</a>
+  <a href="#contacto" class="drawer-cta-mobile">Solicitar Evaluación</a>
 </div>
-
 <!-- Backdrop -->
 <div id="drawer-backdrop" class="backdrop" aria-hidden="true"></div>
 

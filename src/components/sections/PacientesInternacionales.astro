@@ -1,0 +1,212 @@
+---
+import { InternacionalesData } from "../../data/PacientesInternacionales.js";
+---
+
+<section class="intl-section" id="internacional">
+    <div class="container">
+        <div class="intl-header">
+            <span class="intl-subtitle">Área de Pacientes Internacionales</span>
+            <h2 class="section-title">Continuidad Clínica sin Fronteras</h2>
+            <p class="section-intro">
+                Servicio orientado al seguimiento online de familias de habla
+                hispana que residen fuera del país, especialmente en <strong
+                    >Estados Unidos, Europa e Hispanoamérica</strong
+                >.
+            </p>
+            <p class="section-intro">
+                Se <strong>ofrece</strong> un <strong>espacio de trabajo</strong
+                >
+                clínico sostenido,
+                <strong
+                    >con foco en la continuidad del proceso terapéutico</strong
+                >, adaptado a las
+                <strong>particularidades culturales</strong> y de contexto de cada
+                caso.
+            </p>
+        </div>
+        <h3 class="section-title differentials">Principales Diferenciales</h3>
+
+        <div class="intl-grid">
+            {
+                InternacionalesData &&
+                    InternacionalesData.map((item) => (
+                        <div class="intl-card">
+                            <div class="card-content">
+                                <span class="card-tag">{item.tag}</span>
+                                <h3 class="card-title">{item.titulo}</h3>
+                                <p class="card-desc">{item.descripcion}</p>
+                            </div>
+                        </div>
+                    ))
+            }
+        </div>
+
+        <div class="intl-destinatarios">
+            <div class="destinatarios-content">
+                <h3>Destinatarios</h3>
+                <ul>
+                    <li>
+                        Residentes en Estados Unidos, Europa e Hispanoamérica.
+                    </li>
+                    <li>Personas en procesos migratorios o de expatriación.</li>
+                    <li>
+                        Seguimiento clínico a distancia con profesionales de
+                        referencia.
+                    </li>
+                    <li>
+                        Búsqueda de espacio terapéutico en el propio idioma.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .intl-section {
+        background-color: #03070d;
+        padding: 8rem 1.5rem;
+        color: white;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .intl-header {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 5rem;
+    }
+
+    .intl-subtitle {
+        color: var(--accent, #c5a47e);
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        font-size: 0.8rem;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .differentials {
+        margin-bottom: 1rem;
+        margin-top: 5rem;
+        color: var(--accent, #c5a47e);
+        font-size: 2rem !important;
+        font-weight: 400;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .section-title {
+        font-family: "Lora", serif;
+        font-size: clamp(2.2rem, 5vw, 3.2rem);
+        margin-bottom: 1.5rem;
+    }
+
+    .section-intro {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 1.1rem;
+        line-height: 1.7;
+    }
+
+    .intl-grid {
+        display: grid;
+        /* Forzamos 2 columnas en desktop para mejor balance */
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-bottom: 5rem;
+    }
+
+    .intl-card {
+        background: linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.03) 0%,
+            transparent 100%
+        );
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 3rem;
+        opacity: 1; /* Respaldo */
+        visibility: visible;
+    }
+
+    .card-tag {
+        color: var(--accent, #c5a47e);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .card-title {
+        font-family: "Lora", serif;
+        font-size: 1.6rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .card-desc {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .intl-destinatarios {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 4rem;
+    }
+
+    .destinatarios-content h3 {
+        font-family: "Lora", serif;
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+        color: var(--accent, #c5a47e);
+    }
+
+    .intl-destinatarios ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        list-style: none;
+        padding: 0;
+    }
+
+    .intl-destinatarios li {
+        position: relative;
+        padding-left: 2rem;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.05rem;
+    }
+
+    .intl-destinatarios li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--accent, #c5a47e);
+        font-size: 1.5rem;
+        line-height: 1;
+    }
+
+    @media (max-width: 768px) {
+        .intl-grid {
+            grid-template-columns: 1fr;
+        }
+        .intl-card {
+            padding: 2rem;
+        }
+        .section-title {
+            font-size: 1.5rem;
+        }
+        .differentials {
+            font-size: 2rem !important;
+        }
+        .section-intro {
+            font-size: 1rem;
+        }
+    }
+</style>

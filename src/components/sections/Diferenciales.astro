@@ -1,0 +1,289 @@
+---
+import { DiferencialesData } from "../../data/Diferenciales.js";
+---
+
+<section class="diff-section">
+    <div class="container">
+        <div class="diff-header">
+            <span class="diff-subtitle">Nuestra Propuesta de Valor</span>
+            <h2 class="section-title">¿Por qué elegir Vinculo Vital?</h2>
+        </div>
+
+        <div class="diff-grid">
+            {
+                DiferencialesData.map((item) => (
+                    <div class="diff-card">
+                        <div class="diff-number">{item.id}</div>
+                        <div class="diff-content">
+                            <h3 class="diff-title">{item.titulo}</h3>
+                            <p class="diff-text">{item.descripcion}</p>
+                            <div class="diff-highlight">
+                                <span>{item.resaltado}</span>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+
+        <div class="cta-kinetic-wrapper">
+            <a href="#contacto" class="kinetic-bar">
+                <!-- Capas de fondo para profundidad -->
+                <div class="glass-layer"></div>
+                <div class="glow-point"></div>
+
+                <div class="kinetic-content">
+                    <div class="text-stack">
+                        <span class="top-label">Comenzar ahora</span>
+                        <span class="main-text">Dar el primer paso</span>
+                    </div>
+
+                    <div class="icon-orbit">
+                        <div class="orbit-ring"></div>
+                        <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                        >
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    .diff-section {
+        background-color: #03070d;
+        padding: 8rem 1.5rem;
+        color: white;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .diff-header {
+        text-align: left;
+        margin-bottom: 4rem;
+    }
+
+    .diff-subtitle {
+        color: #c5a47e; /* Color de Atelier Medical */
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        font-size: 0.8rem;
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .section-title {
+        font-family: "Lora", serif;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        line-height: 1.2;
+    }
+
+    .diff-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .diff-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        /* IMPORTANTE: Visibilidad por defecto por si falla GSAP */
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .diff-number {
+        font-family: "Lora", serif;
+        font-size: 1.2rem;
+        color: #c5a47e;
+        font-weight: bold;
+    }
+
+    .diff-title {
+        font-family: "Lora", serif;
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+
+    .diff-text {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .diff-highlight {
+        margin-top: auto;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(197, 164, 126, 0.3);
+        color: #c5a47e;
+        font-size: 0.9rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    @media (max-width: 768px) {
+        .diff-section {
+            padding: 4rem 1rem;
+        }
+        .diff-card {
+            padding: 2rem;
+        }
+        .diff-cta-container {
+            margin-top: 3.5rem;
+        }
+        .diff-cta-button {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    .cta-kinetic-wrapper {
+        margin-top: 7rem;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .kinetic-bar {
+        position: relative;
+        display: block;
+        width: 100%;
+        max-width: 450px;
+        padding: 1.2rem 2rem;
+        text-decoration: none;
+        overflow: hidden;
+        border-radius: 20px;
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Efecto Glassmorphism */
+    .glass-layer {
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        z-index: 1;
+    }
+
+    /* Punto de luz que sigue el movimiento sutilmente */
+    .glow-point {
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+            circle,
+            rgba(197, 164, 126, 0.15) 0%,
+            transparent 70%
+        );
+        z-index: 2;
+        transition: transform 0.5s ease;
+    }
+
+    .kinetic-content {
+        position: relative;
+        z-index: 3;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .text-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .top-label {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #c5a47e;
+        font-weight: 600;
+        opacity: 0.8;
+    }
+
+    .main-text {
+        font-size: 1.25rem;
+        color: #fff;
+        font-weight: 500;
+        font-family: "Lora", serif;
+    }
+
+    /* Icono con animación de órbita */
+    .icon-orbit {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #c5a47e;
+        color: #03070d;
+        border-radius: 15px;
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .orbit-ring {
+        position: absolute;
+        inset: -5px;
+        border: 1px solid rgba(197, 164, 126, 0.3);
+        border-radius: 18px;
+        transition: all 0.5s ease;
+    }
+
+    /* HOVER EFFECTS */
+    .kinetic-bar:hover {
+        transform: scale(1.03);
+        border-color: rgba(197, 164, 126, 0.5);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    .kinetic-bar:hover .icon-orbit {
+        transform: rotate(45deg);
+        border-radius: 50%;
+        background: #fff;
+    }
+
+    .kinetic-bar:hover .orbit-ring {
+        inset: -10px;
+        opacity: 0;
+        transform: scale(1.2);
+    }
+
+    .kinetic-bar:hover .glow-point {
+        transform: translate(10%, 10%);
+    }
+
+    .kinetic-bar:active {
+        transform: scale(0.98);
+    }
+
+    @media (max-width: 480px) {
+        .kinetic-bar {
+            max-width: 100%;
+        }
+        .main-text {
+            font-size: 1.1rem;
+        }
+    }
+</style>

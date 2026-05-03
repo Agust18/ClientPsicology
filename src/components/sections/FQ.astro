@@ -1,0 +1,174 @@
+---
+import { FAQData } from "../../data/FQ.js";
+---
+
+<section class="faq-section">
+    <div class="faq-container">
+        <h2 class="faq-title">Preguntas Frecuentes</h2>
+
+        <div class="faq-list">
+            {
+                FAQData.map((item, index) => (
+                    <div class="faq-item" data-index={index}>
+                        <button class="faq-question">
+                            <span class="question-text">{item.pregunta}</span>
+                            <div class="faq-icon">
+                                <span class="line-h" />
+                                <span class="line-v" />
+                            </div>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="answer-content">
+                                <p>{item.respuesta}</p>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .faq-section {
+        padding: 8rem 1.5rem;
+        background-color: #03070d; /* Tu color de fondo */
+        display: flex;
+        justify-content: center;
+    }
+
+    .faq-container {
+        width: 100%;
+        max-width: 800px;
+    }
+
+    .faq-title {
+        font-family: "Lora", serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        color: #fff;
+        margin-bottom: 4rem;
+        text-align: center;
+    }
+
+    .faq-item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        transition: border-color 0.4s ease;
+    }
+
+    .faq-item:hover {
+        border-color: var(--accent); /* Tu color de acento */
+    }
+
+    .faq-question {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2.5rem 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+        text-align: left;
+    }
+
+    .question-text {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.1rem;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+        transition: color 0.3s ease;
+    }
+
+    .faq-item:hover .question-text {
+        color: #fff;
+    }
+
+    /* Icono minimalista */
+    .faq-icon {
+        position: relative;
+        width: 20px;
+        height: 20px;
+    }
+
+    .line-h,
+    .line-v {
+        position: absolute;
+        background-color: var(--accent);
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .line-h {
+        top: 50%;
+        width: 100%;
+        height: 1px;
+        transform: translateY(-50%);
+    }
+    .line-v {
+        left: 50%;
+        height: 100%;
+        width: 1px;
+        transform: translateX(-50%);
+    }
+
+    /* Estado abierto del icono */
+    .faq-item.active .line-v {
+        transform: translateX(-50%) rotate(90deg);
+        opacity: 0;
+    }
+    .faq-item.active .line-h {
+        transform: translateY(-50%) rotate(180deg);
+    }
+
+    .faq-answer {
+        height: 0;
+        overflow: hidden;
+        will-change: height;
+    }
+
+    .answer-content {
+        padding-bottom: 2.5rem;
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.8;
+        font-size: 1rem;
+        max-width: 90%;
+    }
+</style>
+
+<script>
+    import { gsap } from "gsap";
+
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach((item) => {
+        const question = item.querySelector(".faq-question");
+        const answer = item.querySelector(".faq-answer");
+
+        question?.addEventListener("click", () => {
+            const isOpen = item.classList.contains("active");
+
+            // Cerramos todos los demás (opcional, para estilo acordeón único)
+            faqItems.forEach((otherItem) => {
+                if (
+                    otherItem !== item &&
+                    otherItem.classList.contains("active")
+                ) {
+                    otherItem.classList.remove("active");
+                    gsap.to(otherItem.querySelector(".faq-answer"), {
+                        height: 0,
+                        duration: 0.5,
+                        ease: "power2.inOut",
+                    });
+                }
+            });
+
+            // Toggle de la pregunta actual
+            item.classList.toggle("active");
+
+            gsap.to(answer, {
+                height: isOpen ? 0 : "auto",
+                duration: 0.6,
+                ease: "power3.inOut",
+            });
+        });
+    });
+</script>
