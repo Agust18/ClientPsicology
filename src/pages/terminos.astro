@@ -1,0 +1,81 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+---
+
+<Layout>
+    <Header />
+    <section class="legal-page">
+        <div class="container">
+            <h1>Términos y Condiciones</h1>
+
+            <p>
+                El uso de este sitio web implica la aceptación de los siguientes
+                términos.
+            </p>
+
+            <h2>Uso del sitio</h2>
+            <p>
+                Este sitio tiene fines informativos y de contacto profesional.
+                No constituye una relación clínica directa ni reemplaza una
+                consulta profesional.
+            </p>
+
+            <h2>Responsabilidad</h2>
+            <p>
+                La información presentada en este sitio es de carácter general y
+                puede no aplicar a todos los casos individuales.
+            </p>
+
+            <h2>Propiedad del contenido</h2>
+            <p>
+                Todo el contenido, textos y diseño del sitio están protegidos y
+                no pueden ser reproducidos sin autorización.
+            </p>
+
+            <h2>Modificaciones</h2>
+            <p>
+                El contenido del sitio puede actualizarse o modificarse en
+                cualquier momento sin previo aviso.
+            </p>
+
+            <h2>Contacto</h2>
+            <p>
+                Para consultas relacionadas con estos términos, puedes utilizar
+                los medios de contacto disponibles.
+            </p>
+        </div>
+    </section>
+    <Footer />
+    <style>
+        .legal-page {
+            padding: 6rem 1.5rem;
+            background: #03070d;
+            color: #ffffff;
+            font-family: "Inter", sans-serif;
+        }
+
+        .legal-page .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .legal-page h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .legal-page h2 {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            color: #c5a47e;
+        }
+
+        .legal-page p {
+            line-height: 1.8;
+            color: #a0aec0;
+            margin-top: 0.5rem;
+        }
+    </style>
+</Layout>

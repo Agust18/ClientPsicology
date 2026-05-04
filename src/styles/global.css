@@ -28,6 +28,8 @@
 html {
   scroll-behavior: smooth;
   height: 100%;
+  scroll-padding-top: 85px;
+  /* ajusta según tu header */
 }
 
 body {

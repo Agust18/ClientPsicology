@@ -406,6 +406,26 @@ import Logo from "./Logo.astro";
       margin-inline: 160px;
     }
   }
+
+  @media (max-width: 425px) {
+    .nav-cta-desktop {
+      display: none;
+    }
+    .drawer-logo-container {
+      margin-right: 112px;
+    }
+
+    .drawer-close {
+      right: 22px;
+      top: 20px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .drawer-logo-container {
+      margin-right: 102px;
+    }
+  }
 </style>
 
 <script>

@@ -1,0 +1,85 @@
+---
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+    <Header />
+    <section class="legal-page">
+        <div class="container">
+            <h1>Política de Privacidad</h1>
+
+            <p>
+                Este sitio web es de carácter informativo y profesional. Su
+                objetivo es presentar servicios, equipo profesional y facilitar
+                el contacto.
+            </p>
+
+            <h2>Datos que se recopilan</h2>
+            <p>
+                Este sitio puede recopilar datos básicos como nombre, correo
+                electrónico y mensajes enviados a través de formularios de
+                contacto.
+            </p>
+
+            <h2>Uso de la información</h2>
+            <p>
+                La información proporcionada se utiliza exclusivamente para
+                responder consultas y gestionar comunicaciones relacionadas con
+                los servicios ofrecidos.
+            </p>
+
+            <h2>Almacenamiento y protección</h2>
+            <p>
+                Los datos no se venden ni se comparten con terceros. Se
+                almacenan de forma segura y solo por el tiempo necesario para la
+                comunicación.
+            </p>
+
+            <h2>Servicios externos</h2>
+            <p>
+                Este sitio puede utilizar herramientas externas como analítica
+                web o servicios de mensajería, los cuales pueden recopilar datos
+                técnicos anónimos.
+            </p>
+
+            <h2>Contacto</h2>
+            <p>
+                Si tienes dudas sobre esta política, puedes comunicarte a través
+                de los canales de contacto disponibles en el sitio.
+            </p>
+        </div>
+    </section>
+    <Footer />
+    <style>
+        .legal-page {
+            padding: 6rem 1.5rem;
+            background: #03070d;
+            color: #ffffff;
+            font-family: "Inter", sans-serif;
+        }
+
+        .legal-page .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .legal-page h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .legal-page h2 {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            color: #c5a47e;
+        }
+
+        .legal-page p {
+            line-height: 1.8;
+            color: #a0aec0;
+            margin-top: 0.5rem;
+        }
+    </style>
+</Layout>
