@@ -74,7 +74,6 @@ import { DiferencialesData } from "../../data/Diferenciales.js";
     /* 🔥 HEADER */
     .diff-header {
         margin-bottom: clamp(3rem, 6vw, 5rem);
-        max-width: 1000px;
     }
 
     /* SUBTÍTULO */
@@ -91,10 +90,10 @@ import { DiferencialesData } from "../../data/Diferenciales.js";
     /* 🔥 TÍTULO PRO */
     .section-title {
         font-family: "Lora", serif;
-        font-size: clamp(2.4rem, 5vw, 4rem);
+        font-size: clamp(2rem, 4vw, 3rem);
         line-height: 1.1;
         letter-spacing: -0.6px;
-        max-width: 900px;
+
         text-wrap: balance;
     }
 
@@ -329,24 +328,11 @@ import { DiferencialesData } from "../../data/Diferenciales.js";
     /* 🖥️ DESKTOP GRANDE */
     @media (min-width: 1200px) {
         .diff-header {
-            max-width: 1100px;
-            margin-left: 3rem;
+            text-align: center;
         }
 
         .diff-header h2 {
-            text-align: left;
-            padding-left: 3.5rem;
-        }
-        .diff-header span {
-            padding-left: 2rem;
-        }
-
-        .diff-subtitle {
-            padding-left: 3.5rem;
-        }
-
-        .section-title {
-            max-width: 1000px;
+            text-align: center;
         }
     }
 </style>

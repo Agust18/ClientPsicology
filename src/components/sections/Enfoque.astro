@@ -96,9 +96,14 @@ import { EnfoqueData } from "../../data/Enfoque";
 
     .title {
         font-family: "Lora", serif;
-        font-size: clamp(2.2rem, 4vw, 3.5rem);
-        line-height: 1.1;
+
         font-weight: 400;
+
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 1.15;
+        max-width: 700px;
+        margin: 0 auto;
+        letter-spacing: -0.3px;
     }
 
     .scroll-indicator {
@@ -182,8 +187,12 @@ import { EnfoqueData } from "../../data/Enfoque";
             position: static;
         }
 
+        .sticky-info .tag {
+            text-align: center;
+        }
+
         .title {
-            font-size: clamp(1.8rem, 7vw, 2.3rem);
+            text-align: center;
         }
 
         .content-card {
@@ -203,6 +212,9 @@ import { EnfoqueData } from "../../data/Enfoque";
 
         .scroll-indicator {
             margin-top: 2rem;
+        }
+        .scroll-indicator span {
+            font-size: 1rem;
         }
     }
 </style>
