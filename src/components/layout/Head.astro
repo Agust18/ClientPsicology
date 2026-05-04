@@ -1,35 +1,35 @@
 ---
-// Definimos los props con los valores reales del proyecto "Atelier Medical"
+// ⚠️ IMPORTANTE: poner tu dominio real
+const baseUrl = "https://tudominio.com";
+
 const {
-  title = "Vinculo Vital | Psicología  y Neuropsicología Clinica Interdisciplinaria",
-  description = "Bienvenido a Vinculo Vital, donde la excelencia se encuentra con el bienestar emocional. Explora nuestros servicios especializados y encuentra el equilibrio que mereces.",
-  image = "/og-image.jpg", // Asegúrate de tener esta imagen en tu carpeta public
-  url = "", // URL de tu despliegue
+  title = "Vínculo Vital | Psicología Clínica Interdisciplinaria",
+  description = "Atención psicológica y neuropsicológica interdisciplinaria. Evaluación, seguimiento clínico y acompañamiento profesional personalizado.",
+  image = `${baseUrl}/og-image.jpg`,
+  url = baseUrl,
 } = Astro.props;
 ---
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<link rel="icon" href="/Logo.png" />
 <title>{title}</title>
 <meta name="description" content={description} />
 
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-<!-- SEO Básico -->
+<!-- SEO -->
 <meta name="author" content="Agustin Camera" />
-<!-- Referencia al desarrollador -->
+<link rel="canonical" href={url} />
+<meta name="robots" content="index, follow" />
 
-<!-- Open Graph / WhatsApp / Facebook -->
+<!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content={url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={image} />
 
-<!-- Twitter / X Cards -->
+<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />

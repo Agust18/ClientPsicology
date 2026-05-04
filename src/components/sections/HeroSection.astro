@@ -5,7 +5,7 @@ import { heroData } from "../../data/hero.js";
 // import heroVideo from "../../assets/videos/hero.mp4";
 ---
 
-<section id="inicio" class="hero-wrapper">
+<section class="hero-wrapper" id="hero-section">
   <div class="hero-bg">
     <video
       id="heroVideo"
@@ -46,13 +46,13 @@ import { heroData } from "../../data/hero.js";
         </p>
 
         <div class="hero-actions">
-          <button class="btn-boutique">
+          <a href="#contacto" class="btn-boutique">
             {heroData.ctaPrimary}
-          </button>
+          </a>
 
-          <button id="" class="btn-text-link">
+          <a href="#dispositivo" class="btn-text-link">
             {heroData.ctaSecondary}
-          </button>
+          </a>
         </div>
       </div>
     </div>
@@ -161,9 +161,10 @@ import { heroData } from "../../data/hero.js";
 
   .hero-description {
     max-width: 580px;
-    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-size: clamp(1rem, 2vw, 1.4rem);
     color: rgba(255, 255, 255, 0.9);
     text-wrap: pretty;
+    margin-top: 1.5rem;
   }
 
   /* ACTIONS */
@@ -296,7 +297,7 @@ import { heroData } from "../../data/hero.js";
   import { gsap } from "gsap";
 
   const setupHeroVisuals = () => {
-    const content = document.querySelector(".hero-content");
+    const content = document.querySelector(".hero-container");
     if (!content) return;
 
     // Usamos fromTo para asegurar que GSAP tome el control total del estado A y B
@@ -314,7 +315,7 @@ import { heroData } from "../../data/hero.js";
         "-=0.8",
       )
       .fromTo(
-        ".hero-actions button",
+        ".hero-actions a",
         { y: 20, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: "power3.out" },
         "-=0.6",

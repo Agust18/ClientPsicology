@@ -4,123 +4,36 @@ import Logo from "./Logo.astro";
 ---
 
 <footer class="pie-pagina" aria-labelledby="titulo-pie-pagina">
-    <!-- Título oculto accesible para lectores de pantalla -->
     <h2 id="titulo-pie-pagina" class="sr-only">Pie de página</h2>
 
     <div class="pie-pagina__contenedor">
-        <!--  
-         FILA SUPERIOR: marca + columnas de navegación
-          -->
         <div class="pie-pagina__grilla">
-            <!-- Columna 1: Identidad de marca -->
+            <!-- Columna 1: Identidad -->
             <div class="pie-pagina__marca">
-                <Logo />
+                <div class="pie-pagina__logo-wrap">
+                    <Logo />
+                </div>
                 <p class="pie-pagina__descripcion">
                     Acompañamiento psicológico especializado, centrado en la
-                    persona, con un abordaje humano, integrador y de alta
-                    calidad clínica.
+                    persona, con un abordaje humano e integrador.
                 </p>
-
-                <!-- Redes sociales (a11y: aria-label descriptivo) -->
-                <ul
-                    class="pie-pagina__redes"
-                    role="list"
-                    aria-label="Redes sociales"
-                >
-                    <!-- <li>
-                        <a
-                            href="https://instagram.com"
-                            class="pie-pagina__enlace-red"
-                            aria-label="Seguinos en Instagram"
-                            rel="noopener noreferrer"
-                            target="_blank"
-                        >
-                            <svg
-                                width="18"
-                                height="18"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                aria-hidden="true"
-                                focusable="false"
-                            >
-                                <rect
-                                    x="2"
-                                    y="2"
-                                    width="20"
-                                    height="20"
-                                    rx="5"
-                                    ry="5"
-                                    stroke="currentColor"
-                                    stroke-width="2"></rect>
-                                <circle
-                                    cx="12"
-                                    cy="12"
-                                    r="4"
-                                    stroke="currentColor"
-                                    stroke-width="2"></circle>
-                                <circle
-                                    cx="17.5"
-                                    cy="6.5"
-                                    r="1"
-                                    fill="currentColor"></circle>
-                            </svg>
-                            <span class="sr-only">Instagram</span>
-                        </a>
-                    </li> -->
-                    <!-- <li>
-                        <a
-                            href="https://linkedin.com"
-                            class="pie-pagina__enlace-red"
-                            aria-label="Visitanos en LinkedIn"
-                            rel="noopener noreferrer"
-                            target="_blank"
-                        >
-                            <svg
-                                width="18"
-                                height="18"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                aria-hidden="true"
-                                focusable="false"
-                            >
-                                <rect
-                                    x="2"
-                                    y="2"
-                                    width="20"
-                                    height="20"
-                                    rx="3"
-                                    stroke="currentColor"
-                                    stroke-width="2"></rect>
-                                <path
-                                    d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"></path>
-                            </svg>
-                            <span class="sr-only">LinkedIn</span>
-                        </a>
-                    </li> -->
-                </ul>
             </div>
 
-            <!-- Columna 2: Navegación principal -->
-            <nav
-                class="pie-pagina__columna"
-                aria-label="Navegación del pie de página"
-            >
-                <h3 class="pie-pagina__titulo-columna">Navegación</h3>
-                <ul class="pie-pagina__lista" role="list">
+            <!-- Columna 2: Navegación -->
+            <nav class="pie-pagina__columna" aria-label="Navegación principal">
+                <h3 class="pie-pagina__titulo-columna">Explorar</h3>
+                <ul class="pie-pagina__lista">
                     <li>
                         <a href="#inicio" class="pie-pagina__enlace">Inicio</a>
                     </li>
                     <li>
-                        <a href="#sobre-nosotros" class="pie-pagina__enlace"
-                            >Nosotros</a
+                        <a href="#dispositivo" class="pie-pagina__enlace"
+                            >Dispositivos</a
                         >
                     </li>
                     <li>
-                        <a href="#areas-intervencion" class="pie-pagina__enlace"
-                            >Servicios</a
+                        <a href="#beneficios" class="pie-pagina__enlace"
+                            >Beneficios</a
                         >
                     </li>
                     <li>
@@ -132,19 +45,17 @@ import Logo from "./Logo.astro";
             </nav>
 
             <!-- Columna 3: Servicios -->
-            <nav class="pie-pagina__columna" aria-label="Servicios ofrecidos">
+            <nav class="pie-pagina__columna" aria-label="Servicios">
                 <h3 class="pie-pagina__titulo-columna">Servicios</h3>
-                <ul class="pie-pagina__lista" role="list">
+                <ul class="pie-pagina__lista">
                     <li>
-                        <a href="#areas-intervencion" class="pie-pagina__enlace"
-                            >Áreas de Intervención</a
+                        <a href="#comotrabajamos" class="pie-pagina__enlace"
+                            >Metodología</a
                         >
                     </li>
                     <li>
-                        <a
-                            href="#psicologia-organizacional"
-                            class="pie-pagina__enlace"
-                            >Psicología Organizacional</a
+                        <a href="#internacional" class="pie-pagina__enlace"
+                            >Pacientes Internacionales</a
                         >
                     </li>
                     <li>
@@ -158,135 +69,224 @@ import Logo from "./Logo.astro";
             </nav>
 
             <!-- Columna 4: Legal -->
-            <nav class="pie-pagina__columna" aria-label="Información legal">
+            <nav class="pie-pagina__columna" aria-label="Legal">
                 <h3 class="pie-pagina__titulo-columna">Legal</h3>
-                <ul class="pie-pagina__lista" role="list">
+                <ul class="pie-pagina__lista">
                     <li>
                         <a href="/privacidad" class="pie-pagina__enlace"
-                            >Política de Privacidad</a
+                            >Privacidad</a
                         >
                     </li>
                     <li>
                         <a href="/terminos" class="pie-pagina__enlace"
-                            >Términos de Servicio</a
+                            >Términos</a
                         >
                     </li>
                 </ul>
             </nav>
         </div>
 
-        <!-- 
-         FILA INFERIOR: copyright + créditos
-          -->
-        <div class="pie-pagina__inferior" role="contentinfo">
+        <!-- Badges de Confianza: Ahora dentro de la zona de cierre -->
+        <div class="pie-pagina__certificaciones">
+            <div class="badge-item">
+                <span class="badge-icon">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><path d="M20 6 9 17l-5-5"></path></svg
+                    >
+                </span>
+                <span class="badge-text">Atención Ética</span>
+            </div>
+            <div class="badge-item">
+                <span class="badge-icon">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><path
+                            d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                        ></path><path d="M14 2v6h6"></path><path d="M9 15h6"
+                        ></path><path d="M9 11h6"></path></svg
+                    >
+                </span>
+                <span class="badge-text">Credenciales Verificadas</span>
+            </div>
+            <div class="badge-item">
+                <span class="badge-icon">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><circle cx="12" cy="12" r="10"></circle><path
+                            d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"
+                        ></path><path d="M2 12h20"></path></svg
+                    >
+                </span>
+                <span class="badge-text">Pacientes Internacionales</span>
+            </div>
+        </div>
+
+        <div class="pie-pagina__inferior">
             <p class="pie-pagina__copyright">
-                &copy; {anioActual} Psicología Boutique. Todos los derechos reservados.
+                &copy; {anioActual}
+                <strong>Vinculo Vital</strong>. Todos los derechos reservados.
             </p>
-            <p class="pie-pagina__credenciales">
-                Credenciales verificadas &middot; Atención ética y responsable
-            </p>
+            <p class="pie-pagina__autor">Diseño de Alta Fidelidad</p>
         </div>
     </div>
 </footer>
+
 <style>
     .pie-pagina {
-        /* Redefinimos localmente para evitar conflictos */
-        --p-fondo: #03070d;
-        --p-borde: rgba(180, 147, 90, 0.1);
-        --p-oro: #b4935a;
-        --p-texto: rgba(255, 255, 255, 0.5);
+        --p-fondo: #050a12;
+        --p-oro: #c5a47e;
+        --p-oro-tenue: rgba(197, 164, 126, 0.15);
+        --p-texto-muted: rgba(255, 255, 255, 0.5);
+        --p-borde: rgba(255, 255, 255, 0.05);
 
         background-color: var(--p-fondo);
-        border-top: 1px solid var(--p-borde);
-        padding-block: clamp(60px, 10vh, 100px);
-        width: 100%;
+        padding: clamp(60px, 10vh, 100px) 0 40px;
         color: white;
+        font-family:
+            system-ui,
+            -apple-system,
+            sans-serif;
     }
 
     .pie-pagina__contenedor {
         max-width: 1200px;
-        margin-inline: auto;
-        padding-inline: 2rem;
+        margin: 0 auto;
+        padding: 0 2rem;
     }
 
-    /* GRILLA: Forzamos el comportamiento para que no se amontone */
     .pie-pagina__grilla {
         display: grid;
         grid-template-columns: 1fr;
         gap: 3rem;
+        padding-bottom: 4rem;
     }
 
-    /* Desktop: 4 columnas con la primera más ancha */
     @media (min-width: 992px) {
         .pie-pagina__grilla {
-            grid-template-columns: 1.5fr 0.8fr 0.8fr 0.8fr;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 2rem;
         }
     }
 
-    /* Columna Marca */
-    .pie-pagina__logo {
-        font-family: "Lora", serif;
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        color: white;
+    .pie-pagina__marca {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
     }
 
-    .pie-pagina__logo em {
-        color: var(--p-oro);
-        font-style: italic;
+    .pie-pagina__logo-wrap {
+        max-width: 180px;
+        opacity: 0.9;
     }
 
     .pie-pagina__descripcion {
-        font-size: 0.9rem;
-        line-height: 1.8;
-        color: var(--p-texto);
-        max-width: 30ch;
-        font-weight: 300;
+        color: var(--p-texto-muted);
+        line-height: 1.7;
+        font-size: 0.95rem;
+        max-width: 32ch;
     }
 
-    /* Títulos de columna: Estilo "Agencia" */
     .pie-pagina__titulo-columna {
         font-size: 0.7rem;
         text-transform: uppercase;
         letter-spacing: 0.2em;
-        color: white;
+        color: var(--p-oro);
         margin-bottom: 1.5rem;
-        opacity: 0.9;
+        font-weight: 700;
     }
 
     .pie-pagina__lista {
         list-style: none;
         padding: 0;
-        margin: 0;
         display: flex;
         flex-direction: column;
         gap: 0.8rem;
     }
 
     .pie-pagina__enlace {
-        color: var(--p-texto);
+        color: var(--p-texto-muted);
         text-decoration: none;
         font-size: 0.9rem;
         transition: all 0.3s ease;
-        display: inline-block;
     }
 
     .pie-pagina__enlace:hover {
-        color: var(--p-oro);
-        transform: translateX(5px);
+        color: white;
+        transform: translateX(3px);
     }
 
-    /* Fila Inferior (Copyright) */
-    .pie-pagina__inferior {
-        margin-top: 4rem;
-        padding-top: 2rem;
+    .pie-pagina__enlace--destacado {
+        color: var(--p-oro);
+        font-weight: 500;
+    }
+
+    /* Sección de Certificaciones / Badges */
+    .pie-pagina__certificaciones {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        padding: 2rem 0;
         border-top: 1px solid var(--p-borde);
+        border-bottom: 1px solid var(--p-borde);
+    }
+
+    .badge-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .badge-icon {
+        width: 28px;
+        height: 28px;
+        display: grid;
+        place-items: center;
+        background: var(--p-oro-tenue);
+        color: var(--p-oro);
+        border-radius: 50%;
+    }
+
+    .badge-text {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--p-texto-muted);
+        font-weight: 500;
+    }
+
+    /* Copyright */
+    .pie-pagina__inferior {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
         justify-content: space-between;
         align-items: center;
+        padding-top: 2rem;
+        gap: 1rem;
     }
 
     @media (min-width: 768px) {
@@ -296,20 +296,11 @@ import Logo from "./Logo.astro";
     }
 
     .pie-pagina__copyright,
-    .pie-pagina__credenciales {
+    .pie-pagina__autor {
         font-size: 0.75rem;
-        color: rgba(255, 255, 255, 0.3);
+        color: rgba(255, 255, 255, 0.2);
     }
 
-    .pie-pagina__enlace--destacado {
-        color: var(--p-oro);
-        font-weight: 500;
-        border: 1px solid var(--p-oro);
-        border-radius: 2px;
-        padding: 0.5rem 1rem;
-    }
-
-    /* Utilidad para ocultar (Accessibility) */
     .sr-only {
         position: absolute;
         width: 1px;

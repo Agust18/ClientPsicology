@@ -15,12 +15,12 @@ import Logo from "./Logo.astro";
 
     <!-- Desktop links -->
     <ul class="nav-links" role="list">
-      <li><a href="#inicio" class="nav-link">Inicio</a></li>
+      <li><a href="#" class="nav-link">Inicio</a></li>
       <li><a href="#dispositivo" class="nav-link">Dispositivo</a></li>
       <!-- Antes Servicios -->
       <li><a href="#equipo" class="nav-link">Equipo</a></li>
       <!-- Antes Nosotros -->
-      <li><a href="#internacional" class="nav-link">Internacional</a></li>
+      <li><a href="#internacional" class="nav-link">Área Internacional</a></li>
       <!-- Nuevo link clave -->
     </ul>
 
@@ -103,7 +103,7 @@ import Logo from "./Logo.astro";
     --link-hover: #ffffff;
     --link-active: #ffffff;
     --ease: cubic-bezier(0.4, 0, 0.2, 1);
-    --drawer-w: min(360px, 90vw);
+    --drawer-w: min(375px, 90vw);
     --nav-h: 70px;
   }
 
@@ -145,7 +145,7 @@ import Logo from "./Logo.astro";
   }
 
   .drawer-logo-container {
-    margin-bottom: 36px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -290,7 +290,7 @@ import Logo from "./Logo.astro";
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 120px 32px 48px; /* Más aire arriba para no chocar con la X */
+    padding: 90px 10px 28px; /* Más aire arriba para no chocar con la X */
     transform: translateX(100%);
     transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
     box-shadow: -10px 0 50px rgba(0, 0, 0, 0.3);
@@ -326,7 +326,7 @@ import Logo from "./Logo.astro";
   /* Contenedor de links */
   .drawer-links {
     list-style: none;
-    margin: 0 0 40px;
+    margin: 0 0 10px;
     padding: 0;
     width: 100%;
   }
@@ -334,7 +334,7 @@ import Logo from "./Logo.astro";
   /* Link individual: Estilo Editorial */
   .drawer-link {
     display: block;
-    padding-block: 20px;
+    padding-block: 10px;
     font-family: "Lora", serif;
     font-size: 1.5rem; /* Un poco más grande para legibilidad móvil */
     text-decoration: none;
@@ -356,9 +356,9 @@ import Logo from "./Logo.astro";
   .drawer-cta-mobile {
     display: inline-block;
     width: 80%;
-    padding: 15px 32px;
+    padding: 10px 20px;
     text-align: center;
-    font-weight: 800;
+    font-weight: 300;
     border-radius: 12px;
     text-decoration: none;
     transition: transform 0.2s ease;

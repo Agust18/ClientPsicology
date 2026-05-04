@@ -1,43 +1,78 @@
 ---
 import { Image } from "astro:assets";
-import logoImg from "../../assets/images/logo.svg";
+import logoImg from "../../assets/images/Logo.png";
 ---
 
-<a href="#inicio" class="logo-link">
-    <!-- El logo en imagen -->
-    <Image src={logoImg} alt="Vínculo Vital" class="logo-img" />
+<a href="#hero-section" class="logo-link" aria-label="Ir al inicio">
+    <div class="logo-container">
+        <Image
+            format="avif"
+            src={logoImg}
+            alt="Logotipo de Vínculo Vital"
+            class="logo-img"
+            loading="eager"
+        />
+    </div>
 
-    <span class="logo-text">Vinculo <em>Vital</em></span>
+    <span class="logo-text">Vínculo <em>Vital</em></span>
 </a>
 
 <style>
     .logo-link {
         text-decoration: none;
-        padding: 0.5rem 0;
         display: inline-flex;
         align-items: center;
+        gap: 12px; /* Espacio exacto entre imagen y texto */
+        transition: opacity 0.3s ease;
     }
-    .logo-text {
-        font-family: "Lora", serif;
-        font-size: 1.25rem; /* Un pelín más grande para que destaque en el header */
-        font-weight: 500; /* Un poco más de cuerpo ayuda a la legibilidad */
-        color: white;
-        white-space: nowrap;
-        letter-spacing: -0.01em; /* Un toque editorial: junta apenas las letras */
-    }
-    .logo-text em {
-        color: var(--accent);
-        font-style: italic;
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 60px; /* Contenedor fijo para evitar saltos de layout */
     }
 
     .logo-img {
-        height: 40px; /* Ajusta según el diseño */
-        width: auto; /* Mantiene la proporción */
+        height: 100%; /* Ocupa el alto del contenedor */
+        width: auto;
         object-fit: contain;
-        transition: transform 0.3s ease;
+        transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
+    .logo-text {
+        font-family: "Lora", serif;
+        font-size: 1.35rem; /* Un poco más de presencia */
+        font-weight: 500;
+        color: #ffffff;
+        white-space: nowrap;
+        letter-spacing: -0.02em; /* Estilo editorial más marcado */
+        line-height: 1;
+    }
+
+    .logo-text em {
+        color: var(--accent);
+        font-style: italic;
+        /* Un ligero ajuste de peso para el italic si es necesario */
+        font-weight: 400;
+    }
+
+    /* Interacción Premium */
     .logo-link:hover .logo-img {
-        transform: scale(1.05); /* Un efecto sutil al pasar el mouse */
+        transform: scale(1.08) rotate(-2deg); /* Un giro mínimo le da un toque orgánico */
+    }
+
+    .logo-link:hover .logo-text {
+        opacity: 0.9;
+    }
+
+    /* Ajuste para mobile: reducimos un poco el tamaño global */
+    @media (max-width: 768px) {
+        .logo-container {
+            height: 48px;
+        }
+        .logo-text {
+            font-size: 1.1rem;
+        }
     }
 </style>

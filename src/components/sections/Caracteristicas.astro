@@ -113,73 +113,6 @@ import { ejesPrincipales, especialidades } from "../../data/Caracteristicas.js";
                 }
             </div>
         </div>
-
-        <!-- ÁREA INTERNACIONAL -->
-        <div
-            class="international-zone glass-panel highlight-border gsap-fade-up"
-        >
-            <div class="intl-header">
-                <div class="intl-title-group">
-                    <span class="intl-badge">Global Coverage</span>
-                    <h3>Área de Pacientes Internacionales</h3>
-                </div>
-                <p class="intl-lead">
-                    Servicio orientado al seguimiento online de familias de
-                    habla hispana que residen fuera del país (EE.UU., Europa e
-                    Hispanoamérica) o en contextos de movilidad internacional.
-                </p>
-            </div>
-
-            <div class="intl-details">
-                <div class="intl-column">
-                    <h4>Diferenciales principales</h4>
-                    <ul class="custom-list">
-                        <li class="gsap-li">
-                            <strong>Confidencialidad:</strong> Alto estándar en el
-                            manejo de la información y resguardo en cada instancia.
-                        </li>
-                        <li class="gsap-li">
-                            <strong>Comprensión del Contexto:</strong> Entendemos
-                            las dificultades de acceso a salud en el exterior (costos
-                            y fragmentación).
-                        </li>
-                        <li class="gsap-li">
-                            <strong>Respaldo Clínico:</strong> Criterios alineados
-                            a estándares de instituciones de referencia como el <strong
-                                >Hospital Austral</strong
-                            >.
-                        </li>
-                        <li class="gsap-li">
-                            <strong>Acceso Virtual:</strong> Consultas con especialistas
-                            de primer nivel en Argentina sin necesidad de traslados.
-                        </li>
-                    </ul>
-                </div>
-                <div class="intl-column recipients glass-panel-inner">
-                    <h4>Destinatarios</h4>
-                    <p class="mb-4 text-gray-300">
-                        Personas y familias de habla hispana que:
-                    </p>
-                    <ul class="custom-list">
-                        <li class="gsap-li">
-                            Residen en Estados Unidos, Europa e Hispanoamérica.
-                        </li>
-                        <li class="gsap-li">
-                            Se encuentran en procesos migratorios o de
-                            expatriación.
-                        </li>
-                        <li class="gsap-li">
-                            Requieren seguimiento clínico con un profesional de
-                            referencia.
-                        </li>
-                        <li class="gsap-li">
-                            Buscan un espacio terapéutico en su idioma y con
-                            comprensión cultural.
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -200,6 +133,7 @@ import { ejesPrincipales, especialidades } from "../../data/Caracteristicas.js";
         padding: clamp(4rem, 8vw, 6rem) 5%;
         font-family: "Inter", sans-serif;
         position: relative;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
     }
 
     /* Background Glows */
@@ -398,7 +332,6 @@ import { ejesPrincipales, especialidades } from "../../data/Caracteristicas.js";
         font-size: 1.05rem;
     }
 
-    /* International Zone */
     .highlight-border {
         position: relative;
     }
@@ -421,91 +354,6 @@ import { ejesPrincipales, especialidades } from "../../data/Caracteristicas.js";
         pointer-events: none;
     }
 
-    .intl-header {
-        text-align: center;
-        max-width: 800px;
-        margin: 0 auto clamp(2rem, 4vw, 3rem);
-    }
-    .intl-title-group {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-    }
-    .intl-badge {
-        background: rgba(197, 164, 126, 0.1);
-        color: var(--accent);
-        border: 1px solid rgba(197, 164, 126, 0.2);
-        padding: 0.4rem 1rem;
-        border-radius: 100px;
-        font-weight: 600;
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-    }
-    .intl-header h3 {
-        font-family: "Lora", serif;
-        font-size: clamp(2rem, 4vw, 3rem);
-        color: #ffffff;
-        font-weight: 400;
-    }
-    .intl-lead {
-        font-size: 1.15rem;
-        color: var(--text-muted);
-        line-height: 1.6;
-    }
-
-    .intl-details {
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 3rem;
-        align-items: start;
-    }
-
-    .intl-column h4 {
-        color: #ffffff;
-        font-size: 1.3rem;
-        margin-bottom: 2rem;
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-    }
-    .intl-column h4::before {
-        content: "";
-        display: block;
-        width: 12px;
-        height: 12px;
-        background: var(--accent);
-        border-radius: 50%;
-    }
-
-    .custom-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-    .custom-list li {
-        margin-bottom: 1.25rem;
-        line-height: 1.6;
-        position: relative;
-        padding-left: 1.75rem;
-        color: var(--text-muted);
-        font-size: 1.05rem;
-    }
-    .custom-list li strong {
-        color: var(--text-main);
-        font-weight: 500;
-    }
-    .custom-list li::before {
-        content: "→";
-        position: absolute;
-        left: 0;
-        color: var(--accent);
-        font-family: system-ui;
-    }
-
     /* Responsive Design */
     @media (max-width: 1024px) {
         .philosophy-grid {
@@ -513,10 +361,6 @@ import { ejesPrincipales, especialidades } from "../../data/Caracteristicas.js";
         }
         .ejes-grid {
             grid-template-columns: 1fr;
-        }
-        .intl-details {
-            grid-template-columns: 1fr;
-            gap: 2rem;
         }
     }
     @media (max-width: 768px) {
@@ -533,12 +377,13 @@ import { ejesPrincipales, especialidades } from "../../data/Caracteristicas.js";
 
     /* --- Premium Header Redesign --- */
     .premium-header {
-        margin-bottom: clamp(4rem, 6vw, 6rem);
+        margin-bottom: clamp(3rem, 6vw, 6rem);
         display: flex;
         flex-direction: column;
-        gap: clamp(2.5rem, 5vw, 4rem);
-        max-width: 1200px;
+        gap: clamp(2rem, 4vw, 3.5rem);
+        max-width: 1100px;
         margin-inline: auto;
+        padding-inline: clamp(0.5rem, 4vw, 1rem);
     }
 
     .premium-badge-wrapper {
@@ -546,19 +391,19 @@ import { ejesPrincipales, especialidades } from "../../data/Caracteristicas.js";
         justify-content: flex-start;
     }
 
+    /* Badge */
     .premium-badge {
         display: inline-flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
         background: rgba(197, 164, 126, 0.05);
         border: 1px solid rgba(197, 164, 126, 0.2);
-        padding: 8px 20px;
+        padding: 6px 16px;
         border-radius: 100px;
         color: var(--accent);
-        font-size: 0.8rem;
+        font-size: 0.7rem;
         font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 2px;
+        letter-spacing: 1.5px;
     }
 
     .pulse-dot {
@@ -576,32 +421,41 @@ import { ejesPrincipales, especialidades } from "../../data/Caracteristicas.js";
         }
     }
 
+    /* Layout */
     .header-main-content {
         display: flex;
         flex-direction: column;
-        gap: 4rem;
+        gap: clamp(2rem, 4vw, 3rem);
     }
-
+    /* 🔥 TITLE FIX REAL */
     .premium-title {
         font-family: "Lora", serif;
-        font-size: clamp(3rem, 6vw, 5.5rem);
-        line-height: 1.05;
+        font-size: clamp(2.2rem, 5vw, 4.8rem);
+        line-height: 1.1;
         color: #ffffff;
         font-weight: 400;
-        letter-spacing: -1px;
+        letter-spacing: -0.5px;
+
+        max-width: 1100px; /* 🔥 más ancho */
+    }
+
+    /* 🔥 Desktop grande (clave) */
+    @media (min-width: 1200px) {
+        .premium-title {
+            max-width: 1200px;
+        }
     }
 
     .premium-title em {
         font-style: normal;
         color: var(--accent);
         position: relative;
-        display: inline-block;
     }
 
     .premium-title em::after {
         content: "";
         position: absolute;
-        bottom: 8px;
+        bottom: 4px;
         left: 0;
         width: 100%;
         height: 2px;
@@ -611,23 +465,27 @@ import { ejesPrincipales, especialidades } from "../../data/Caracteristicas.js";
 
     .header-text-layout {
         display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 5rem;
-        align-items: start;
-        margin-left: auto;
-        width: 90%;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(1.5rem, 4vw, 4rem);
+
+        width: 100%; /* 🔥 antes era 90% */
+        margin-left: 0; /* 🔥 eliminamos el bug */
     }
 
+    /* Texto principal */
     .lead-paragraph {
-        font-size: 1.25rem;
-        line-height: 1.8;
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        line-height: 1.7;
         color: #ffffff;
         font-weight: 300;
+
+        max-width: 600px;
     }
 
+    /* Bloque secundario */
     .secondary-desc-block {
         position: relative;
-        padding-left: 2rem;
+        padding-left: 1.5rem;
     }
 
     .accent-line {
@@ -636,46 +494,67 @@ import { ejesPrincipales, especialidades } from "../../data/Caracteristicas.js";
         left: 0;
         width: 2px;
         height: 100%;
-        background: linear-gradient(
-            to bottom,
-            var(--accent) 0%,
-            transparent 100%
-        );
+        background: linear-gradient(to bottom, var(--accent), transparent);
     }
 
     .logic-paragraph {
-        font-size: 1.05rem;
-        line-height: 1.8;
-        color: rgba(255, 255, 255, 0.6);
-        font-weight: 300;
+        font-size: clamp(0.95rem, 2.3vw, 1.05rem);
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.65);
     }
-
     @media (max-width: 1024px) {
         .header-text-layout {
             grid-template-columns: 1fr;
-            width: 100%;
-            gap: 3rem;
+            gap: 2rem;
         }
+
         .secondary-desc-block {
             padding-left: 0;
-            padding-top: 2rem;
+            padding-top: 1.5rem;
         }
+
         .accent-line {
             width: 100%;
             height: 2px;
-            background: linear-gradient(
-                to right,
-                var(--accent) 0%,
-                transparent 100%
-            );
+            background: linear-gradient(to right, var(--accent), transparent);
         }
     }
+
     @media (max-width: 768px) {
-        .premium-title {
-            font-size: 2.5rem;
-        }
         .premium-header {
-            margin-bottom: 4rem;
+            text-align: center;
+            align-items: center;
+        }
+
+        .premium-badge-wrapper {
+            justify-content: center;
+        }
+
+        .premium-title {
+            font-size: clamp(1.8rem, 6.5vw, 2.5rem);
+            line-height: 1.2;
+        }
+
+        .lead-paragraph,
+        .logic-paragraph {
+            max-width: 100%;
+            text-align: center;
+        }
+
+        .secondary-desc-block {
+            padding-top: 1.2rem;
+        }
+    }
+
+    /* 📱 MINI MOBILE */
+    @media (max-width: 380px) {
+        .premium-title {
+            font-size: 1.6rem;
+        }
+
+        .premium-badge {
+            font-size: 0.65rem;
+            padding: 5px 12px;
         }
     }
 </style>

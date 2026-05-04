@@ -2,7 +2,7 @@
 import { EnfoqueData } from "../../data/Enfoque";
 ---
 
-<section class="enfoque-split" id="enfoque-section">
+<section class="enfoque-split" id="enfoque">
     <div class="container">
         <div class="split-layout">
             <!-- LADO IZQUIERDO: Fijo al scrollear (Desktop) -->
@@ -23,7 +23,7 @@ import { EnfoqueData } from "../../data/Enfoque";
             <div class="right-col">
                 <div class="content-card gsap-card">
                     <span class="card-num italic">01</span>
-                    <h3>El Equipo</h3>
+                    <h3 class="">El Equipo</h3>
                     <p class="text-lead">{EnfoqueData.contenido.principal}</p>
                 </div>
 
@@ -42,63 +42,40 @@ import { EnfoqueData } from "../../data/Enfoque";
         </div>
     </div>
 </section>
-
-<script>
-    import { gsap } from "gsap";
-    import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Animación para las tarjetas de la derecha
-    gsap.utils.toArray(".gsap-card").forEach((card: any) => {
-        gsap.from(card, {
-            opacity: 0,
-            x: 50,
-            duration: 1,
-            scrollTrigger: {
-                trigger: card,
-                start: "top 85%",
-                toggleActions: "play none none reverse",
-            },
-        });
-    });
-
-    // Animación del encabezado izquierdo
-    gsap.from(".gsap-fade", {
-        opacity: 0,
-        y: 30,
-        stagger: 0.2,
-        duration: 1,
-        scrollTrigger: {
-            trigger: "#enfoque-section",
-            start: "top 70%",
-        },
-    });
-</script>
-
 <style>
     .enfoque-split {
         background-color: #03070d;
         color: #fff;
-        padding: clamp(4rem, 10vw, 8rem) 1.5rem;
+        padding: clamp(4rem, 10vw, 8rem) clamp(1rem, 5vw, 1.5rem);
         min-height: 100vh;
     }
 
+    /* ⚠️ override de bootstrap */
     .container {
-        max-width: 1400px;
+        max-width: 1200px;
+        width: 100%;
         margin: 0 auto;
+        padding: 0;
     }
 
     .split-layout {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 4rem;
+        gap: 2rem;
+        width: 100%;
     }
 
+    .left-col,
+    .right-col {
+        width: 100%;
+        min-width: 0; /* 🔥 evita cortes en flex/grid */
+    }
+
+    /* Desktop */
     @media (min-width: 1024px) {
         .split-layout {
             grid-template-columns: 1fr 1fr;
-            gap: 10%;
+            gap: 8%;
         }
 
         .sticky-info {
@@ -107,7 +84,7 @@ import { EnfoqueData } from "../../data/Enfoque";
         }
     }
 
-    /* Estilos Izquierda */
+    /* Izquierda */
     .tag {
         color: #c5a47e;
         font-size: 0.75rem;
@@ -140,14 +117,17 @@ import { EnfoqueData } from "../../data/Enfoque";
         background-color: rgba(197, 164, 126, 0.4);
     }
 
-    /* Estilos Derecha */
+    /* Cards */
     .content-card {
         background: rgba(255, 255, 255, 0.02);
         border: 1px solid rgba(255, 255, 255, 0.05);
-        padding: clamp(2rem, 5vw, 4rem);
+        padding: clamp(2rem, 4vw, 4rem);
         margin-bottom: 2rem;
         border-radius: 4px;
         transition: border-color 0.4s ease;
+        backdrop-filter: blur(6px);
+        width: 100%;
+        overflow: visible;
     }
 
     .content-card:hover {
@@ -159,7 +139,7 @@ import { EnfoqueData } from "../../data/Enfoque";
         color: #c5a47e;
         font-size: 1.2rem;
         display: block;
-        margin-bottom: 2rem;
+        margin-bottom: 1.6rem;
         opacity: 0.6;
     }
 
@@ -170,15 +150,92 @@ import { EnfoqueData } from "../../data/Enfoque";
         font-weight: 400;
     }
 
+    /* 🔥 TEXTO FIX */
     .content-card p {
         color: rgba(255, 255, 255, 0.7);
         line-height: 1.8;
         font-size: 1.1rem;
+
+        width: 100%;
+        max-width: 100%;
+        white-space: normal;
+
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        text-wrap: normal;
     }
 
-    @media (max-width: 1024px) {
+    /* Mobile */
+    @media (max-width: 768px) {
+        .split-layout {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .left-col {
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(197, 164, 126, 0.15);
+            margin-bottom: 2.5rem;
+        }
+
+        .sticky-info {
+            position: static;
+        }
+
+        .title {
+            font-size: clamp(1.8rem, 7vw, 2.3rem);
+        }
+
         .content-card {
-            padding: 2rem;
+            padding: 1.8rem 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .content-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .scroll-indicator {
+            margin-top: 2rem;
         }
     }
 </style>
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animación para las tarjetas de la derecha
+    gsap.utils.toArray(".gsap-card").forEach((card: any) => {
+        gsap.from(card, {
+            opacity: 0,
+            y: 15, // más sutil
+            duration: 0.9,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: card,
+                start: "top 92%",
+                toggleActions: "play none none reverse",
+            },
+        });
+    });
+
+    // Animación del encabezado izquierdo
+    gsap.from(".gsap-fade", {
+        opacity: 0,
+        y: 30,
+        stagger: 0.2,
+        duration: 1,
+        scrollTrigger: {
+            trigger: "#enfoque",
+            start: "top 70%",
+        },
+    });
+</script>

@@ -110,8 +110,7 @@ p {
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 1rem;
-  text-wrap: pretty;
-
+  text-wrap: normal;
 }
 
 /* Clase para descripciones destacadas */
@@ -173,4 +172,27 @@ button {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent);
+}
+
+section {
+  position: relative;
+}
+
+/* separador */
+section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 80%;
+  height: 1px;
+
+  background: linear-gradient(to right,
+      transparent,
+      rgba(197, 164, 126, 0.4),
+      transparent);
+
+  opacity: 0.6;
 }
