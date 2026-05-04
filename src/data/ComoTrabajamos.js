@@ -8,7 +8,7 @@ export const ComoTrabajamosData = [
     {
         paso: "02",
         titulo: "Selección de Disciplinas",
-        descripcion: "Identificamos y seleccionamos las especialidades precisas que el caso requiere, sin prestadores innecesarios.",
+        descripcion: "Armamos el equipo que el caso requiere, sin prestaciones innecesarias.",
         detalle: "Curaduría de profesionales"
     },
     {

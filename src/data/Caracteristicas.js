@@ -1,6 +1,6 @@
 export const especialidades = [
     "Psiquiatría", "Clínica médica", "Neurología", "Psiconeurología",
-    "Endocrinología", "Psicología", "Psicología de la Organización",
+    "Endocrinología", "Psicología",
     "Kinesiología motora y respiratoria", "Fonoaudiología", "Nutrición",
     "Hidroterapia", "Musicoterapia", "Acompañamiento docente terapéutico"
 ];

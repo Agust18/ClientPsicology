@@ -1,7 +1,7 @@
 export const DiferencialesData = [
     {
         id: "01",
-        titulo: "Dirección Médica Centralizada",
+        titulo: "Direccion de equipo medico",
         descripcion: "No somos una cartelera de prestadores aislados; somos una dirección médica centralizada que asume la responsabilidad total de las decisiones clínicas, liberando a la familia del peso de coordinar el tratamiento.",
         resaltado: "Responsabilidad clínica integral."
     },

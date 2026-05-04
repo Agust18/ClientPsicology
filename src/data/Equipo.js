@@ -19,7 +19,7 @@ export const directivos = [
 
 export const psicoterapia = {
     nombre: "Ps. Diego Tripelli",
-    cargo: "Psicólogo Clínico y de Organización",
+    cargo: "Psicólogo Clínico",
     rol: "Responsable del Área de Psicoterapia",
     descripcion: "Especialista en Terapia Cognitiva con más de 20 años de profesión en psicología de adultos y familia. Profesor en Psicología por la Universidad Nacional de Rosario (UNR).",
     enfoque: "El área integra enfoques cognitivo-conductual, psicoanálisis y terapia sistémica. Las intervenciones se construyen con sentido clínico, articuladas con el resto del equipo interdisciplinario."
