@@ -181,23 +181,16 @@ import { psicoterapia, directivos } from "../../data/Equipo.js";
     .container {
         max-width: 1300px;
         margin: 0 auto;
+        padding: 0 1.5rem;
     }
 
     /* Glass Panels */
     .glass-panel {
         background: var(--glass);
         border: 1px solid var(--glass-border);
-
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
         padding: clamp(2rem, 5vw, 4rem);
-    }
-
-    .glass-panel-inner {
-        background: rgba(0, 0, 0, 0.25);
-        border: 1px solid var(--glass-border);
-        border-radius: 20px;
-        padding: 2.5rem;
     }
 
     /* Header Design */
@@ -229,12 +222,10 @@ import { psicoterapia, directivos } from "../../data/Equipo.js";
         line-height: 1.6;
     }
 
-    /* Directors Cards */
     .directors-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-        gap: 3rem;
-        margin-bottom: 5rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: clamp(1.5rem, 3vw, 3rem);
     }
 
     .director-card {
@@ -252,7 +243,6 @@ import { psicoterapia, directivos } from "../../data/Equipo.js";
         background: var(--accent-gold-low);
         color: var(--accent-gold);
         padding: 0.5rem 1.2rem;
-        border-radius: 8px;
         font-size: 0.7rem;
         font-weight: 700;
         text-transform: uppercase;
@@ -272,11 +262,15 @@ import { psicoterapia, directivos } from "../../data/Equipo.js";
         letter-spacing: 1px;
     }
 
+    .doc-bio {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
     .doc-bio p {
-        color: var(--text-soft);
+        max-width: 60ch;
         line-height: 1.8;
-        margin-bottom: 1.5rem;
-        font-size: 1.05rem;
     }
 
     .special-focus {
@@ -327,9 +321,21 @@ import { psicoterapia, directivos } from "../../data/Equipo.js";
 
     .psico-body {
         display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 4rem;
-        margin-top: 3rem;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(2rem, 4vw, 4rem);
+    }
+
+    @media (max-width: 900px) {
+        .psico-body {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .director-card,
+    .psicotherapy-section {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
     }
     .doc-name-large {
         font-family: "Lora", serif;
@@ -351,8 +357,47 @@ import { psicoterapia, directivos } from "../../data/Equipo.js";
 
     @media (max-width: 1024px) {
         .psico-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(2rem, 4vw, 4rem);
+            margin-top: 3rem;
+        }
+        .directors-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 1200px) {
+        .directors-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .team-section {
+            padding: 5rem 1.2rem;
+        }
+
+        .doc-name {
+            font-size: 1.8rem;
+        }
+
+        .doc-bio p {
+            font-size: 0.95rem;
+        }
+
+        .glass-panel {
+            padding: 1.5rem;
+        }
+
+        .role-badge {
+            font-size: 0.65rem;
+            padding: 0.4rem 0.8rem;
+        }
+        .psico-body {
             grid-template-columns: 1fr;
         }
+
         .directors-grid {
             grid-template-columns: 1fr;
         }
